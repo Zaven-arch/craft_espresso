@@ -1,0 +1,39 @@
+.v-card {
+  &__title {
+    user-select: none;
+  }
+
+  &__text {
+    &::after,
+    &::before {
+      content: '';
+      display: block;
+      height: 1px;
+      background: silver;
+      left: 0;
+      right: 0;
+      position: absolute;
+    }
+
+    &::after {
+      top: calc(50% + 50px);
+    }
+    &::before {
+      top: calc(50% + 7px)
+    }
+  }
+}
+
+$height: 44px;
+
+@mixin translate-y($i) {
+  transform: translateY(calc(#{$i} * #{$height}));
+  transition: .1s;
+}
+
+.hours {
+  @include translate-y(var(--hourY));
+}
+.minutes {
+  @include translate-y(var(--minuteY));
+}

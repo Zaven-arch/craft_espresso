@@ -1,0 +1,25 @@
+@import 'assets/scss/_line-clamp.module.scss';
+
+@layer components {
+  @for $i from 1 through 4 {
+    .line-clamp-#{$i} {
+      @include line-clamp(#{$i});
+    }
+  }
+
+  .app-checkbox {
+    @apply [&_*]:tw-min-h-[24px] [&_i]:tw-text-app-primary-red [&_i]:tw-opacity-100 #{!important};
+  }
+
+  .app-status-chip {
+    @apply [&>span:first-child]:-tw-z-10 tw-font-bold tw-normal-case tw-text-center tw-flex tw-justify-center #{!important};
+  }
+
+  .app-clearable-icon {
+    @apply [&_i]:tw-opacity-100 [&_i]:tw-text-app-primary-red #{!important};
+
+    &--primary-red {
+      @apply [&_i]:tw-opacity-100 [&_i]:tw-text-app-primary-red #{!important};
+    }
+  }
+}

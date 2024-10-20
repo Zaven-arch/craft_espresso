@@ -1,0 +1,35 @@
+@layer base {
+  :root {
+    @each $key, $value in $colors {
+      --#{$key}: #{$value};
+    }
+  }
+
+  * {
+    font-family: 'Source Sans Pro';
+  }
+
+  ::before {
+    border-color: currentColor;
+  }
+
+  .v-list {
+    padding: 0 !important;
+  }
+
+  .v-overlay.v-menu {
+    z-index: 9999 !important;
+  }
+
+  ::v-deep(div.v-select__content) {
+    border-radius: 0px !important;
+  }
+
+  hr.v-divider {
+    opacity: 1 !important;
+  }
+
+  .v-overlay.v-snackbar {
+    z-index: 10000 !important;
+  }
+}

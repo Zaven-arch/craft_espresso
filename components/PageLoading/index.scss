@@ -1,0 +1,138 @@
+@import '~/assets/scss/_animation.mixin.scss';
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+$hue: 185;
+$radius: 5.5;
+$size: 4;
+$height: calc(#{$size} * 1vmin);
+$width: calc(#{$size} * 1vmin);
+$x: calc((var(--x) * #{$radius}) * 1vmin);
+$y: calc((var(--y) * #{$radius}) * -1vmin);
+
+@mixin style($l, $transformArgs...) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: $height;
+  width: $width;
+  background: hsl($hue, 60%, $l);
+  transform: _transform($transformArgs);
+}
+
+@function _transform($rotations...) {
+  @return translate(-50%, -50%) $rotations
+    translate3d(0, 0, calc((#{$size} / 2) * 1vmin));
+}
+
+@function _translate3d($zAxis: 0) {
+  @return translate3d($x, $y, $zAxis);
+}
+
+.loading-block {
+  transform: scale(var(--scale));
+  flex: 1;
+}
+
+.scene {
+  perspective: 800px;
+  transform-style: preserve-3d;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plane {
+  height: 5vmin;
+  width: 5vmin;
+  transform-style: preserve-3d;
+  transform: rotateX(-40deg) rotateY(-45deg) rotateX(90deg);
+}
+.cube-wrapper {
+  transform-style: preserve-3d;
+}
+.cube,
+.shadow {
+  height: $height;
+  width: $width;
+  transform-style: preserve-3d;
+  position: absolute;
+  font-size: 1rem;
+  transform: _translate3d();
+  @include _animation(jump 0.8s calc(var(--d) * 1s) infinite);
+
+  & > div {
+    &:nth-of-type(1) {
+      @include style(50%, rotateX(-90deg));
+    }
+    &:nth-of-type(2) {
+      @include style(60%, rotateX(-90deg) rotateY(180deg));
+    }
+    &:nth-of-type(3) {
+      @include style(60%, rotateX(-90deg) rotateY(90deg));
+    }
+    &:nth-of-type(4) {
+      @include style(55%, rotateX(-90deg) rotateY(-90deg));
+    }
+    &:nth-of-type(5) {
+      @include style(45%);
+    }
+    &:nth-of-type(6) {
+      @include style(65%, rotateX(180deg));
+    }
+  }
+}
+
+.shadow {
+  background: radial-gradient(#000, transparent);
+  transform: _translate3d(calc(#{$size} * -0.5vmin)) scale(1);
+  @include _animation(shadow 0.8s calc(var(--d) * 1s) infinite);
+}
+
+@-webkit-keyframes jump {
+  0%,
+  30%,
+  100% {
+    transform: _translate3d();
+  }
+  15% {
+    transform: _translate3d(3.5vmin);
+  }
+}
+@keyframes jump {
+  0%,
+  30%,
+  100% {
+    transform: _translate3d();
+  }
+  15% {
+    transform: _translate3d(3.5vmin);
+  }
+}
+@-webkit-keyframes shadow {
+  0%,
+  30%,
+  100% {
+    transform: _translate3d(calc(#{$size} * -0.5vmin)) scale(1);
+  }
+  15% {
+    transform: _translate3d(calc(#{$size} * -0.5vmin)) scale(0.85);
+    opacity: 0.2;
+  }
+}
+@keyframes shadow {
+  0%,
+  30%,
+  100% {
+    transform: _translate3d(calc(#{$size} * -0.5vmin)) scale(1);
+  }
+  15% {
+    transform: _translate3d(calc(#{$size} * -0.5vmin)) scale(0.85);
+    opacity: 0.2;
+  }
+}

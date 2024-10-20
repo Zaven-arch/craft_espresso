@@ -1,0 +1,252 @@
+{
+  "CLIPBOARD": "Copied to clipboard",
+  "META": {
+    "NAME": "Craft Espresso"
+  },
+  "SNACKBAR": {
+    "CLOSE": "close",
+    "WRONG": "Something went wrong!",
+    "INVALID_FILE_TYPE": "Selected invalid file type",
+    "NOT_SELECTED": "Please select item(s)",
+    "DATA_MANAGEMENT": "Management data successfully updated! | Management data successfully created!",
+    "DATA_PRODUCTS": "Product data successfully updated! | Product successfully created!",
+    "DELETE_PRODUCT": "Product successfully deleted!",
+    "ORDER_PAID": "Order successfully marked as paid!",
+    "ORDER_STATUS": "Order status successfully updated!"
+  },
+  "LANGUAGES": {
+    "ENGLISH": "English",
+    "ARMENIAN": "Armenian"
+  },
+  "STATUS": {
+    "ALL": "All",
+    "DISABLE": "Disable",
+    "ENABLE": "Enable",
+    "WAIT": "Wait",
+    "DONE": "Done"
+  },
+  "SIDEBAR": {
+    "CASHBOX": "Cashbox",
+    "ORDERS": "Orders",
+    "PRODUCTS": "Products",
+    "MANAGEMENT": "Management",
+    "SETTINGS": "Settings"
+  },
+  "NAVBAR": {
+    "CASHBOX": "Cashbox",
+    "ORDERS": "Orders",
+    "ORDERS_WAIT": "Waiting",
+    "ORDERS_DONE": "Completed",
+    "PRODUCTS": "Products",
+    "MANAGEMENT": "Management",
+    "MANAGEMENT_INPUT": "Input",
+    "MANAGEMENT_OUTPUT": "Output",
+    "PRODUCTS_COFFEE": "Coffee",
+    "PRODUCTS_TEA": "Tea",
+    "PRODUCTS_FRESH": "Fresh",
+    "PRODUCTS_OTHER": "Other",
+    "SETTINGS": "Settings"
+  },
+  "TOOLBAR": {
+    "FILTER": "Filter",
+    "ACTIONS": "Actions"
+  },
+  "FILE_UPLOAD": {
+    "TEXT": ["Drag and drop a file here", "or"],
+    "BUTTON": {
+      "CHOOSE": "Choose file",
+      "DELETE": "Delete"
+    }
+  },
+  "FILTER": {
+    "FIELD": {
+      "SEARCH": "Search | Keyword",
+      "USERNAME": "Username"
+    },
+    "BUTTON": {
+      "CLOSE": "Close",
+      "SEARCH": "Search",
+      "SUBMIT": "Submit"
+    }
+  },
+  "WEIGHT": {
+    "KILOGRAM": "kg",
+    "GRAM": "g"
+  },
+  "DATE_TIME_PICKER": {
+    "CANCEL": "cancel",
+    "OK": "ok",
+    "NEXT": "next",
+    "PREV": "prev"
+  },
+  "ACTIONS_MODAL": {
+    "DATA": {
+      "BUTTON": "Close | Save"
+    },
+    "CHANGE": {
+      "BUTTON": "Close | Change"
+    },
+    "DELETE": {
+      "TITLE": "Delete",
+      "CONFIRMATION": "Do you really want to delete the selected data?",
+      "BUTTON": "Close | Delete"
+    }
+  },
+  "MANAGEMENT": {
+    "TITLE": "Input / Output",
+    "GRID_TITLES": [
+      "Name",
+      "Price",
+      "Quantity",
+      "Date",
+      "Type",
+      "Actions"
+    ],
+    "TYPE": {
+      "ALL": "All",
+      "INPUT": "Input",
+      "OUTPUT": "Output"
+    },
+    "ACTIONS_TOOLBAR": {
+      "ADD": "Add management item"
+    },
+    "BUTTON_ACTIONS": {
+      "EDIT": "Edit"
+    },
+    "ADD_MODAL": {
+      "TITLE": "Add item",
+      "FIELD": {
+        "NAME": "Name",
+        "PRICE": "Price",
+        "TYPE": "Type",
+        "QUANTITY": "Quantity",
+        "DATE": "Date"
+      }
+    }
+  },
+  "MANAGEMENT_INPUT": {
+    "TITLE": "Input"
+  },
+  "MANAGEMENT_OUTPUT": {
+    "TITLE": "Output"
+  },
+  "PRODUCTS": {
+    "TITLE": "Products list",
+    "GRID_TITLES": [
+      "Name",
+      "Price",
+      "Type",
+      "Status",
+      "Actions"
+    ],
+    "TYPE": {
+      "ALL": "All",
+      "COFFEE": "Coffee",
+      "TEA": "Tea",
+      "FRESH": "Fresh",
+      "OTHER": "Other"
+    },
+    "ACTIONS_TOOLBAR": {
+      "ADD": "Add product",
+      "DELETE": "Delete product"
+    },
+    "BUTTON_ACTIONS": {
+      "EDIT": "Edit product",
+      "DELETE": "Delete product",
+      "DETAILS": "Show product details"
+    },
+    "ADD_MODAL": {
+      "TITLE": "Edit product | Add product",
+      "FIELD": {
+        "IMAGE": "Image",
+        "NAME": "Name",
+        "SMALL_PRICE": "Small Price",
+        "BIG_PRICE": "Big Price",
+        "TYPE": "Type",
+        "STATUS": "Status"
+      }
+    },
+    "ACTIONS_MODAL_TITLE": {
+      "DELETE": "Delete product",
+      "DELETE_DETAIL": "Do you really want to delete the selected product?"
+    }
+  },
+  "PRODUCTS_COFFEE": {
+    "TITLE": "Products coffee list"
+  },
+  "PRODUCTS_TEA": {
+    "TITLE": "Products tea list"
+  },
+  "PRODUCTS_FRESH": {
+    "TITLE": "Products fresh list"
+  },
+  "PRODUCTS_OTHER": {
+    "TITLE": "Products other list"
+  },
+  "PRODUCT_DETAILS": {
+    "TITLE": "Details of",
+    "FIELD": {
+      "NAME": "Name",
+      "QUANTITY": "Quantity"
+    },
+    "BUTTON": {
+      "ADD": "Add item",
+      "EDIT": "Edit",
+      "BIG": "Big",
+      "SMALL": "Small"
+    }
+  },
+  "SETTING_GENERAL": {
+    "TITLE": "General Settings",
+    "LANGUAGE": "Dashboard Language",
+    "BUTTON": "Save"
+  },
+  "ORDERS": {
+    "TITLE": "Order list",
+    "GRID_TITLES": [
+      "Name",
+      "Order",
+      "Price",
+      "Status",
+      "Actions"
+    ],
+    "ADMIN_MEMO": "Admin memo",
+    "PAID": {
+      "ALL": "All",
+      "YES": "Paid",
+      "NO": "Unpaid"
+    },
+    "ACTIONS_TOOLBAR": {
+      "CHANGE_TO_PAID": "Change to paid",
+      "CHANGE_STATUS": "Change status",
+      "DELETE": "Delete order"
+    },
+    "BUTTON_ACTIONS": {
+      "DELETE": "Delete order",
+      "CHANGE_TO_PAID": "Change to paid",
+      "CHANGE_STATUS": "Change status"
+    },
+    "ACTIONS_MODAL_TITLE": {
+      "DELETE": "Delete order",
+      "DELETE_DETAIL": "Do you really want to delete the selected order?",
+      "CHANGE_TO_PAID": "Change to Paid",
+      "CHANGE_TO_PAID_DETAIL": "Do you really want to mark the order as paid?",
+      "CHANGE_STATUS": "Change status"
+    }
+  },
+  "ORDERS_WAIT": {
+    "TITLE": "Orders wait list"
+  },
+  "ORDERS_DONE": {
+    "TITLE": "Orders completed list"
+  },
+  "CASHBOX": {
+    "PRODUCTS": "Products",
+    "NEED_TO_PAY": "Need to pay",
+    "GIVE_CHANGE": "Give change",
+    "ADD_MEMO": "Add memo",
+    "ORDER": "Order",
+    "BIG": "B",
+    "SMALL": "S"
+  }
+}

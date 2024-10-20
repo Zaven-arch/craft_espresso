@@ -1,0 +1,185 @@
+{
+  "CLIPBOARD": "Պատճենված էClipboard",
+  "META": {
+    "NAME": "Craft Espresso"
+  },
+  "SNACKBAR": {
+    "CLOSE": "փակել",
+    "WRONG": "Ինչ-որ բան սխալ է գնացել:",
+    "INVALID_FILE_TYPE": "Ընտրվել է սխալ ֆայլի տեսակ",
+    "NOT_SELECTED": "Խնդրում ենք ընտրել նյութ(եր)",
+    "DATA_MANAGEMENT": "Կառավարման տվյալները հաջողությամբ թարմացվել են: | Կառավարման տվյալները հաջողությամբ ստեղծվել են:",
+    "DATA_PRODUCTS": "Արտադրանքի տվյալները հաջողությամբ թարմացվել են: | Արտադրանքը հաջողությամբ ստեղծվել է:",
+    "DELETE_PRODUCT": "Արտադրանքը հաջողությամբ ջնջվել է:"
+  },
+  "STATUS": {
+    "ALL": "Բոլորը",
+    "DISABLE": "Ապաակտիվ",
+    "ENABLE": "Ակտիվ"
+  },
+  "SIDEBAR": {
+    "CASHBOX": "Դրամարկղ",
+    "ORDERS": "Պատվերներ",
+    "PRODUCTS": "Արտադրանքներ",
+    "MANAGEMENT": "Կառավարում",
+    "SETTINGS": "Կարգավորումներ"
+  },
+  "NAVBAR": {
+    "CASHBOX": "Դրամարկղ",
+    "ORDERS": "Պատվերներ",
+    "PRODUCTS": "Արտադրանքներ",
+    "MANAGEMENT": "Կառավարում",
+    "MANAGEMENT_INPUT": "Մուտք",
+    "MANAGEMENT_OUTPUT": "Ելք",
+    "PRODUCTS_COFFEE": "Սուրճ",
+    "PRODUCTS_TEA": "Թեյ",
+    "PRODUCTS_FRESH": "Թարմ",
+    "PRODUCTS_OTHER": "Այլ"
+  },
+  "TOOLBAR": {
+    "FILTER": "Ֆիլտր",
+    "ACTIONS": "Հրամաններ"
+  },
+  "FILE_UPLOAD": {
+    "TEXT": ["Քաշեք և թողեք ֆայլը այստեղ", "կամ"],
+    "BUTTON": {
+      "CHOOSE": "Ընտրել ֆայլ",
+      "DELETE": "Ջնջել"
+    }
+  },
+  "FILTER": {
+    "FIELD": {
+      "SEARCH": "Որոնել | Բանալի բառ",
+      "USERNAME": "Օգտանուն"
+    },
+    "BUTTON": {
+      "CLOSE": "Փակել",
+      "SEARCH": "Որոնել",
+      "SUBMIT": "Հաստատել"
+    }
+  },
+  "WEIGHT": {
+    "KILOGRAM": "կգ",
+    "GRAM": "գ"
+  },
+  "DATE_TIME_PICKER": {
+    "CANCEL": "չեղարկել",
+    "OK": "լավ",
+    "NEXT": "հաջորդ",
+    "PREV": "նախորդ"
+  },
+  "ACTIONS_MODAL": {
+    "DATA": {
+      "BUTTON": "Փակել | Պահպանել"
+    },
+    "CHANGE": {
+      "BUTTON": "Փակել | Փոխել"
+    },
+    "DELETE": {
+      "TITLE": "Ջնջել",
+      "CONFIRMATION": "Արդյո՞ք իսկապես ցանկանում եք ջնջել ընտրված տվյալները:",
+      "BUTTON": "Փակել | Ջնջել"
+    }
+  },
+  "MANAGEMENT": {
+    "TITLE": "Մուտք / Ելք",
+    "GRID_TITLES": [
+      "Անուն",
+      "Գին",
+      "Քանակ",
+      "Ամսաթիվ",
+      "Տեսակ",
+      "Գործողություններ"
+    ],
+    "TYPE": {
+      "ALL": "Բոլորը",
+      "INPUT": "Մուտք",
+      "OUTPUT": "Ելք"
+    },
+    "ACTIONS_TOOLBAR": {
+      "ADD": "Ավելացնել"
+    },
+    "BUTTON_ACTIONS": {
+      "EDIT": "Խմբագրել"
+    },
+    "ADD_MODAL": {
+      "TITLE": "Ավելացնել նյութ",
+      "FIELD": {
+        "NAME": "Անուն",
+        "PRICE": "Գին",
+        "TYPE": "Տեսակ",
+        "QUANTITY": "Քանակ",
+        "DATE": "Ամսաթիվ"
+      }
+    }
+  },
+  "MANAGEMENT_INPUT": {
+    "TITLE": "Մուտք"
+  },
+  "MANAGEMENT_OUTPUT": {
+    "TITLE": "Ելք"
+  },
+  "PRODUCTS": {
+    "TITLE": "Արտադրանքների ցուցակ",
+    "GRID_TITLES": [
+      "Անուն",
+      "Գին",
+      "Տեսակ",
+      "Կարգավիճակ",
+      "Գործողություններ"
+    ],
+    "TYPE": {
+      "ALL": "Բոլորը",
+      "COFFEE": "Սուրճ",
+      "TEA": "Թեյ",
+      "FRESH": "Թարմ",
+      "OTHER": "Այլ"
+    },
+    "ACTIONS_TOOLBAR": {
+      "ADD": "Ավելացնել արտադրանք",
+      "DELETE": "Ջնջել արտադրանքը"
+    },
+    "BUTTON_ACTIONS": {
+      "EDIT": "Խմբագրել արտադրանքը",
+      "DELETE": "Ջնջել արտադրանքը",
+      "DETAILS": "Ցույց տալ մանրամասները"
+    },
+    "ADD_MODAL": {
+      "TITLE": "Խմբագրել արտադրանքը | Ավելացնել արտադրանք",
+      "FIELD": {
+        "IMAGE": "Նկար",
+        "NAME": "Անուն",
+        "PRICE": "Գին",
+        "TYPE": "Տեսակ",
+        "STATUS": "Կարգավիճակ"
+      }
+    },
+    "ACTIONS_MODAL_TITLE": {
+      "DELETE": "Ջնջել արտադրանքը",
+      "DELETE_DETAIL": "Արդյո՞ք իսկապես ցանկանում եք ջնջել ընտրված արտադրանքը:"
+    }
+  },
+  "PRODUCTS_COFFEE": {
+    "TITLE": "Սուրճի ցուցակ"
+  },
+  "PRODUCTS_TEA": {
+    "TITLE": "Թեյի ցուցակ"
+  },
+  "PRODUCTS_FRESH": {
+    "TITLE": "Թարմ արտադրանքների ցուցակ"
+  },
+  "PRODUCTS_OTHER": {
+    "TITLE": "Այլ արտադրանքների ցուցակ"
+  },
+  "PRODUCT_DETAILS": {
+    "TITLE": "Մանրամասներ",
+    "FIELD": {
+      "NAME": "Անուն",
+      "QUANTITY": "Քանակ"
+    },
+    "BUTTON": {
+      "ADD": "Ավելացնել",
+      "EDIT": "Խմբագրել"
+    }
+  }
+}

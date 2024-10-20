@@ -1,0 +1,22 @@
+.scrollbar {
+  &>div:nth-child(2) {
+    white-space: break-spaces;
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #e6e6e6;
+    border-left: 1px solid #dadada;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #c2bfbf;
+    border: solid 3px #e6e6e6;
+    border-radius: 7px;
+
+    &:hover {
+      background: #aaa5a5;
+    }
+  }
+}
