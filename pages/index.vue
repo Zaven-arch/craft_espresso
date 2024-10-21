@@ -132,8 +132,13 @@
 <script  lang="ts" setup>
 import { useCashboxPage } from './cashbox/index.script'
 
+definePageMeta({
+  middleware: ['only-authorized-middleware'],
+})
+
 const {
   color, productTypeItems, setProductType, isTypeEqual, isCreditCard, onSubmitHandler,
   pending, productsState, state, price, lightBlue, togglePaymentMethod, loading,
 } = useCashboxPage()
+
 </script>

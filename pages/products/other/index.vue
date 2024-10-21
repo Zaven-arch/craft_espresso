@@ -117,8 +117,8 @@
                     :name="item.name"
                     :image="item.image"
                     :type="item.type"
-                    :smallPrice="item.small_price"
-                    :bigPrice="item.big_price"
+                    :small-price="item.small_price"
+                    :big-price="item.big_price"
                     :status="item.status"
                   >
                     <template #actionButton>
@@ -168,6 +168,10 @@
 
 <script lang="ts" setup>
 import { useProductsOtherPage } from './index.script'
+
+definePageMeta({
+  middleware: ['only-authorized-middleware'],
+})
 
 const {
   color,

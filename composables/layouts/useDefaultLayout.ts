@@ -6,11 +6,14 @@ import { $getColor } from '~/utils'
 
 import type {
   INavigationDrawerItem,
+  IUseLogout,
   IUseNavbar,
   IUseNavigationDrawer,
 } from '~/interfaces'
 
 import { navbarConfig, navigationDrawerConfig } from '~/configs'
+
+import { AuthService } from '~/services'
 
 export const useDefaultLayout = async () => {
   const { setNavbar, setColors: setNavbarColors }: IUseNavbar = useNavbar()
@@ -58,7 +61,21 @@ export const useDefaultLayout = async () => {
 
   open()
 
+  const { loading: logoutLoading, logout }: IUseLogout = useLogout()
+
+  const { logout: _logout } = new AuthService()
+
+  const { goTo } = useAppRouter()
+
+  const onLogoutHandler = () => logout(() => {
+    _logout()
+
+    goTo('/login')
+  })
+
   return {
+    logoutLoading,
+    onLogoutHandler,
     color: $getColor(Colors.PAGE_BACKGROUND),
   }
 }

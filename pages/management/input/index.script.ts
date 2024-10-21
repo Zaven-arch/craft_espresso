@@ -7,7 +7,12 @@ import { Colors, ManagementType, Status } from '~/enums'
 import { managementActionConfig } from '~/configs'
 
 import { ManagementService } from '~/services'
+
 import type { IUseLoading, IUseSnackbar } from '~/interfaces'
+
+export const _pageMeta = {
+  middleware: ['only-authorized-middleware'],
+}
 
 export const useManagementInputPage = () => {
   const { t } = useI18n()

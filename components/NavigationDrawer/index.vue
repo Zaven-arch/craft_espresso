@@ -59,7 +59,18 @@
               :has-limitation="item.hasLimitation"
             />
           </div>
-        </div>
+        </div>        <v-container>
+          <v-btn
+            :loading="logoutLoading"
+            variant="outlined"
+            color="white"
+            block
+            class="!tw-capitalize !tw-font-normal"
+            @click="$emit('onLogout')"
+          >
+            {{ $t('SIDEBAR.LOGOUT') }}
+          </v-btn>
+        </v-container>
       </v-tabs>
     </div>
   </v-navigation-drawer>

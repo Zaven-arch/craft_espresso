@@ -169,6 +169,10 @@
 <script lang="ts" setup>
 import { useProductsPage } from './index.script'
 
+definePageMeta({
+  middleware: ['only-authorized-middleware'],
+})
+
 const {
   color,
   page,

@@ -10,6 +10,10 @@ import { ProductsService, UploadService } from '~/services'
 
 import type { IUseLoading, IUseSnackbar } from '~/interfaces'
 
+export const _pageMeta = {
+  middleware: ['only-authorized-middleware'],
+}
+
 export const useProductsCoffeePage = () => {
   const { t } = useI18n()
 

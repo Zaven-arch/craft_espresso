@@ -129,6 +129,11 @@
 <script lang="ts" setup>
 import { useManagementOutputPage } from './index.script'
 
+definePageMeta({
+  middleware: ['only-authorized-middleware'],
+})
+
+
 const {
   color,
   page,

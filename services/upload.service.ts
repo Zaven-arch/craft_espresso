@@ -30,7 +30,7 @@ export class UploadService {
   async save(file: File) {
     const fileType: string | undefined = Object
       .entries(FileType)
-      .find((item) => item[1] === file.type)?.[0]
+      ?.find((item) => item[1] === file.type)?.[0]
 
     const { data, error } = await this.supabase.storage
       .from(this.BUCKET_NAME)

@@ -1,3 +1,4 @@
+import { VValidation } from './VValidation.class'
 import { generateOrder } from './generate-order.util'
 import { getImageAsFile } from './get-image-as-file.util'
 import checkSelection from './check-selection.util'
@@ -13,6 +14,7 @@ import range from './range.util'
 import { getRightDate } from './getRightDate.util'
 import { dateFormat } from './date-format.util'
 import { numberFormat } from './number-format.util'
+import { ValidationRegexp } from './validation-regexp.util'
 
 export {
   getPathUtil as $getPath,
@@ -29,4 +31,6 @@ export {
   numberFormat as $numberFormat,
   getImageAsFile as $getImageAsFile,
   generateOrder as $generateOrder,
+  VValidation,
+  ValidationRegexp,
 }

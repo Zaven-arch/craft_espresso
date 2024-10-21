@@ -29,7 +29,7 @@ export const useProducts = () => {
       return state.value.active = null
     }
 
-    state.value.active = state.value.data.find(
+    state.value.active = state.value.data?.find(
       (item: any) => item.id === id,
     )
   }

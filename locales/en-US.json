@@ -1,7 +1,20 @@
 {
   "CLIPBOARD": "Copied to clipboard",
+  "PRIVACY_POLICY": "Privacy policy",
+  "TERMS_CONDITION": "Terms & Conditions",
+  "COPY_RIGHT": "©︎ Craft Espresso Inc. All Right Reserved.",
   "META": {
     "NAME": "Craft Espresso"
+  },
+  "VALIDATORS": {
+    "EMAIL": "Email must be valid!",
+    "REQUIRED": "Field is required",
+    "PASSWORD": "At least {min} characters. Now: {count}",
+    "PASSWORD_NOT_MATCH": "Password mismatch!",
+    "MAX_LENGTH": "Should be at most {max} characters",
+    "PASSWORD_NUMERIC": "Password must contain at least 1 number",
+    "PASSWORD_SPEC_SYMBOL": "User must contain at least one special character from the following set: {symbols}",
+    "ONLY_NUMBERS": "Only numbers are available to fill in"
   },
   "SNACKBAR": {
     "CLOSE": "close",
@@ -34,7 +47,8 @@
     "ORDERS": "Orders",
     "PRODUCTS": "Products",
     "MANAGEMENT": "Management",
-    "SETTINGS": "Settings"
+    "SETTINGS": "Settings",
+    "LOGOUT": "Logout"
   },
   "NAVBAR": {
     "CASHBOX": "Cashbox",
@@ -95,6 +109,12 @@
       "CONFIRMATION": "Do you really want to delete the selected data?",
       "BUTTON": "Close | Delete"
     }
+  },
+  "LOGIN": {
+    "SUBTITLE": "Welcome back! Please login to your account.",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "BUTTON": "Login"
   },
   "MANAGEMENT": {
     "TITLE": "Input / Output",

@@ -12,6 +12,7 @@ import { $getPath } from '~/utils'
 export interface INavigationDrawerProps {
   permanent: boolean
   logoSrc: string
+  logoutLoading: boolean
 }
 
 export type IEmits = (e: 'onLogout') => void
@@ -19,6 +20,7 @@ export type IEmits = (e: 'onLogout') => void
 export const defaultProps = {
   permanent: false,
   logoSrc: '',
+  logoutLoading: false,
 }
 
 export const useNavigationDrawerComponent = () => {

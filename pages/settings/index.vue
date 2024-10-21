@@ -36,6 +36,10 @@
 <script lang="ts" setup>
 import { useGeneralSettingsPage } from './index.script'
 
+definePageMeta({
+  middleware: ['only-authorized-middleware'],
+})
+
 const {
   color, languages, form, onSaveHandler,
 } = await useGeneralSettingsPage()

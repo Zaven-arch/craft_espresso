@@ -117,7 +117,7 @@ export const useOrdersPage = () => {
 
       await Promise.all(
         checkboxRef.checkbox?.state?.value?.map(async (id: string) => {
-          const order: IOrder = state.value.data.find((item: IOrder) => item.id === id)
+          const order: IOrder = state.value.data?.find((item: IOrder) => item.id === id)
 
           if (!order) {
             return
@@ -149,7 +149,7 @@ export const useOrdersPage = () => {
 
       await Promise.all(
         checkboxRef.checkbox?.state?.value?.map(async (id: string) => {
-          const order: IOrder = state.value.data.find((item: IOrder) => item.id === id)
+          const order: IOrder = state.value.data?.find((item: IOrder) => item.id === id)
 
           if (!order) {
             return
@@ -186,7 +186,7 @@ export const useOrdersPage = () => {
 
       await Promise.all(
         checkboxRef.checkbox?.state?.value?.map(async (id: string) => {
-          const order: IOrder = state.value.data.find((item: IOrder) => item.id === id)
+          const order: IOrder = state.value.data?.find((item: IOrder) => item.id === id)
 
           if (!order) {
             return

@@ -21,7 +21,7 @@ export const useNavbarComponent = () => {
 
   const items: INavbarItem[] = $navbar.data[$route.path.split('/')[2]] ?? $navbar.data.root
 
-  const item: INavbarItem | null | undefined = items.find(
+  const item: INavbarItem | null | undefined = items?.find(
     (_item: INavbarItem) => $route.path.startsWith(localePath($getPath(_item.route))),
   )
 

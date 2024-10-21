@@ -14,7 +14,7 @@ export class BaseService {
 
   protected supabase: SupabaseClient
 
-  constructor(table: DBTable) {
+  constructor(table: DBTable | null) {
     const {
       public: { dbUrl, supabaseKey },
     } = useRuntimeConfig()

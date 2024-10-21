@@ -1,4 +1,4 @@
-import { DateFormat } from '@lxgic/enums'
+import { DateFormat } from '../enums'
 
 import { DateTime } from 'luxon'
 

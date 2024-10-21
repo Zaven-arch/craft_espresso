@@ -197,6 +197,10 @@
 <script lang="ts" setup>
 import { useOrdersWaitPage } from './index.script'
 
+definePageMeta({
+  middleware: ['only-authorized-middleware'],
+})
+
 const {
   color,
   page,
