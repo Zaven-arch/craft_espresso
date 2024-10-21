@@ -29,7 +29,4 @@ export default defineNuxtConfig({
     enabled: false,
   },
   svgo: svgoConfig,
-  // target: 'static',
-  ssr: false,
-  mode: 'spa',
 } as NuxtConfig)
