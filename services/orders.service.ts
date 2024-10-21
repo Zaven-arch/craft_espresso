@@ -1,4 +1,4 @@
-import { DBTable, Status } from '~/enums'
+import { DBTable } from '~/enums'
 
 import type { IOrder } from '~/interfaces'
 
@@ -26,6 +26,7 @@ export class OrdersService extends BaseService {
       order: order.order,
       status: order.status,
       is_paid: order.is_paid,
+      payment_method: order.payment_method,
       memo: order.memo,
       products: order.order_products.map((item: any) => {
         item.products.small_count = item.small_count

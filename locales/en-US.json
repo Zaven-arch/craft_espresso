@@ -18,6 +18,10 @@
     "ENGLISH": "English",
     "ARMENIAN": "Armenian"
   },
+  "PAYMENT_METHOD": {
+    "CREDIT_CARD": "Credit card",
+    "FIAT": "Fiat"
+  },
   "STATUS": {
     "ALL": "All",
     "DISABLE": "Disable",
@@ -207,6 +211,7 @@
       "Name",
       "Order",
       "Price",
+      "Payment Method",
       "Status",
       "Actions"
     ],

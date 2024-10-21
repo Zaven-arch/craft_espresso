@@ -34,8 +34,10 @@ export const defaultProps = {
 }
 
 export const useOrderCardComponent = ({
-  status, isPaid,
+  status, isPaid, paymentMethod,
 }: IOrderCardProps) => {
+  const { t } = useI18n()
+
   const {
     public: { storageUrl },
   }: RuntimeConfig = useRuntimeConfig()
@@ -63,10 +65,21 @@ export const useOrderCardComponent = ({
     () => isPaid === 'YES',
   )
 
+  const paymentMethodText: ComputedRef<string> = computed<string>(
+    () => {
+      if (paymentMethod === PaymentMethod.CREDIT_CARD) {
+        return t('PAYMENT_METHOD.CREDIT_CARD')
+      }
+
+      return t('PAYMENT_METHOD.FIAT')
+    },
+  )
+
   return {
     storageUrl,
     cardStatus,
     isPaidIcon,
+    paymentMethodText,
     color: $getColor(Colors.PRIMARY_RED),
     lightBlue: $getColor(Colors.LIGHT_BLUE),
   }

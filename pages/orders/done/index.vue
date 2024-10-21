@@ -87,7 +87,7 @@
             <template #titleItems>
               <div
                 class="tw-grid tw-text-center tw-font-bold tw-text-app-grey-font tw-gap-3
-                tw-grid-cols-[1fr_100px_150px_repeat(2,_130px)]
+                tw-grid-cols-[1fr_100px_repeat(2,_150px)_repeat(2,_130px)]
                 tw-text-xs tw-items-center"
               >
                 <div

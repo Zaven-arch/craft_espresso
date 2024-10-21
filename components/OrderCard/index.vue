@@ -2,7 +2,7 @@
   <v-card variant="flat" rounded="0">
     <v-card-text>
       <v-sheet
-        class="!tw-px-3 !tw-grid !tw-grid-cols-[28px_1fr_100px_150px_repeat(2,_130px)]
+        class="!tw-px-3 !tw-grid !tw-grid-cols-[28px_1fr_100px_repeat(2,_150px)_repeat(2,_130px)]
         tw-items-start !tw-text-app-gun-powder-light tw-text-base tw-gap-3"
       >
         <div>
@@ -72,6 +72,9 @@
           <span v-text="$numberFormat(price)" />
           <svgo-dram-icon width="16" />
         </div>
+        <div class="tw-text-center">
+          <span class="tw-font-semibold tw-text-lg" v-text="paymentMethodText" />
+        </div>
         <div class="tw-relative">
           <v-chip
             v-if="cardStatus"
@@ -111,6 +114,6 @@ const props = withDefaults(
 )
 
 const {
-  color, cardStatus, isPaidIcon, storageUrl, lightBlue,
+  color, cardStatus, isPaidIcon, storageUrl, lightBlue, paymentMethodText,
 } = useOrderCardComponent(props)
 </script>
