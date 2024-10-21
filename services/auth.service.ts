@@ -17,7 +17,6 @@ export class AuthService extends BaseService {
     if (error) {
       throw error
     }
-    console.log(data)
 
     return data
   }

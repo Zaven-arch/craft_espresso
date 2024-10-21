@@ -22,7 +22,7 @@ export const useLogin = (): IUseLogin => {
 
   const redirectionPath: Ref<string> = ref<string>('')
 
-  onUpdated(() => {
+  watchEffect(() => {
     if ($route.query?.rp) {
       redirectionPath.value = $route.query?.rp as string
     }
