@@ -94,6 +94,7 @@ export const useSettingsStaffPage = async () => {
       setChangeLoading(true)
 
       await update(state.value.active?.id, {
+        email_confirm: status === Status.ENABLE,
         user_metadata: {
           status,
         },
