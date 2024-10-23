@@ -7,11 +7,7 @@ export default {
     $createNavbarItem('NAVBAR.CASHBOX', 'root', NavigationDrawerRoute.CASHBOX),
   ],
   [NavigationDrawerRoute.ORDERS]: [
-    $createNavbarItem(
-      'NAVBAR.ORDERS',
-      'orders',
-      NavigationDrawerRoute.ORDERS,
-    ),
+    $createNavbarItem('NAVBAR.ORDERS', 'orders', NavigationDrawerRoute.ORDERS),
     $createNavbarItem(
       'NAVBAR.ORDERS_WAIT',
       'orders/wait',

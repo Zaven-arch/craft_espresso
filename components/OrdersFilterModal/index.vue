@@ -5,9 +5,7 @@
         <v-col cols="12" sm="11">
           <v-row>
             <v-col cols="12">
-              <filter-modal-field-label
-                :label="$t('FILTER.FIELD.SEARCH', 1)"
-              >
+              <filter-modal-field-label :label="$t('FILTER.FIELD.SEARCH', 1)">
                 <v-text-field
                   v-model.trim="state.filter.keyword"
                   :placeholder="$t('FILTER.FIELD.SEARCH', 0)"
@@ -21,9 +19,7 @@
               </filter-modal-field-label>
             </v-col>
             <v-col cols="12" md="4">
-              <filter-modal-field-label
-                :label="$t('ORDERS.FILTER.STATUS')"
-              >
+              <filter-modal-field-label :label="$t('ORDERS.FILTER.STATUS')">
                 <v-select
                   v-model="state.filter.isPaid"
                   :items="paidStatusItems"
@@ -42,16 +38,10 @@
           </v-row>
           <v-row>
             <v-col cols="12" md="10" lg="6">
-              <filter-modal-field-label
-                :label="$t('ORDERS.FILTER.DATE')"
-              >
+              <filter-modal-field-label :label="$t('ORDERS.FILTER.DATE')">
                 <v-row class="tw-py-2" align="center">
                   <v-col cols="12" sm="5" class="!tw-py-1">
-                    <date-time-modal
-                      v-model="
-                        state.filter.startDate
-                      "
-                    >
+                    <date-time-modal v-model="state.filter.startDate">
                       <template #field="{ open, clear, date }">
                         <v-text-field
                           :value="date"
@@ -79,11 +69,7 @@
                     </v-icon>
                   </v-col>
                   <v-col cols="12" sm="5" class="!tw-py-1">
-                    <date-time-modal
-                      v-model="
-                        state.filter.endDate
-                      "
-                    >
+                    <date-time-modal v-model="state.filter.endDate">
                       <template #field="{ open, clear, date }">
                         <v-text-field
                           :value="date"

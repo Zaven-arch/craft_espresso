@@ -126,7 +126,10 @@
         </div>
       </v-col>
     </v-slide-y-transition>
-    <management-data-modal :loading="submitLoading" @on-submit="onSubmitHandler" />
+    <management-data-modal
+      :loading="submitLoading"
+      @on-submit="onSubmitHandler"
+    />
   </v-row>
 </template>
 

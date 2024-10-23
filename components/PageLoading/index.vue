@@ -21,12 +21,13 @@
 </template>
 
 <script lang="ts" setup>
-import { usePageLoadingComponent, defaultProps, type IPageLoadingProps } from './index.script'
-
-withDefaults(
-  defineProps<Partial<IPageLoadingProps>>(),
+import {
+  usePageLoadingComponent,
   defaultProps,
-)
+  type IPageLoadingProps,
+} from './index.script'
+
+withDefaults(defineProps<Partial<IPageLoadingProps>>(), defaultProps)
 
 const { state } = usePageLoadingComponent()
 </script>

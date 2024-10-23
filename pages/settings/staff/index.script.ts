@@ -26,9 +26,7 @@ export const useSettingsStaffPage = async () => {
 
   onUnmounted(() => setData([]))
 
-  const {
-    getStaffAccounts, remove, update,
-  } = new StaffSettingsService()
+  const { getStaffAccounts, remove, update } = new StaffSettingsService()
 
   const { $open }: IUseSnackbar = useSnackbar()
 
@@ -40,7 +38,7 @@ export const useSettingsStaffPage = async () => {
     try {
       setPending(true)
 
-      const { data, total_page: length } : any = await getStaffAccounts({
+      const { data, total_page: length }: any = await getStaffAccounts({
         perPage: state.value.limit,
         page: page.value,
       })

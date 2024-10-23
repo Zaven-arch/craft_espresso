@@ -1,10 +1,5 @@
 <template>
-  <modal-window
-    :key="isOpen"
-    :modal="isOpen"
-    max-width="1000"
-    @close="close"
-  >
+  <modal-window :key="isOpen" :modal="isOpen" max-width="1000" @close="close">
     <template #title>
       <span
         class="tw-text-app-gun-powder-light tw-text-2xl"
@@ -165,10 +160,7 @@ import {
   type IEmits,
 } from './index.script'
 
-withDefaults(
-  defineProps<IProductDataModalProps>(),
-  defaultProps,
-)
+withDefaults(defineProps<IProductDataModalProps>(), defaultProps)
 
 defineEmits<IEmits>()
 

@@ -59,7 +59,8 @@
               :has-limitation="item.hasLimitation"
             />
           </div>
-        </div>        <v-container>
+        </div>
+        <v-container>
           <v-btn
             :loading="logoutLoading"
             variant="outlined"
@@ -78,13 +79,13 @@
 
 <script lang="ts" setup>
 import {
-  useNavigationDrawerComponent, defaultProps, type IEmits, type INavigationDrawerProps,
+  useNavigationDrawerComponent,
+  defaultProps,
+  type IEmits,
+  type INavigationDrawerProps,
 } from './index.script'
 
-withDefaults(
-  defineProps<Partial<INavigationDrawerProps>>(),
-  defaultProps,
-)
+withDefaults(defineProps<Partial<INavigationDrawerProps>>(), defaultProps)
 
 defineEmits<IEmits>()
 

@@ -35,8 +35,5 @@ const props = withDefaults(
 
 const emits = defineEmits<IEmits>()
 
-const { page } = usePaginationComponent(
-  props,
-  emits,
-)
+const { page } = usePaginationComponent(props, emits)
 </script>

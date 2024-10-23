@@ -18,11 +18,7 @@
           </v-col>
           <v-row class="tw-py-2" justify="center">
             <v-col cols="12" sm="5" class="!tw-py-1">
-              <date-time-modal
-                v-model="
-                  state.startDate
-                "
-              >
+              <date-time-modal v-model="state.startDate">
                 <template #field="{ open, clear, date }">
                   <v-text-field
                     :value="date"
@@ -40,21 +36,13 @@
                 </template>
               </date-time-modal>
             </v-col>
-            <v-col
-              v-if="$vuetify.display.smAndUp"
-              cols="auto"
-              class="!tw-px-0"
-            >
+            <v-col v-if="$vuetify.display.smAndUp" cols="auto" class="!tw-px-0">
               <v-icon size="10">
                 mdi-tilde
               </v-icon>
             </v-col>
             <v-col cols="12" sm="5" class="!tw-py-1">
-              <date-time-modal
-                v-model="
-                  state.endDate
-                "
-              >
+              <date-time-modal v-model="state.endDate">
                 <template #field="{ open, clear, date }">
                   <v-text-field
                     :value="date"

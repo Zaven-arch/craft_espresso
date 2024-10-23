@@ -17,9 +17,11 @@ export const defaultProps = {
   text: '&mdash;',
 }
 
-export const useCashboxProductCardComponent = (
-  { image, modelValue, id }: ICashboxProductCardComponentProps,
-) => {
+export const useCashboxProductCardComponent = ({
+  image,
+  modelValue,
+  id,
+}: ICashboxProductCardComponentProps) => {
   const {
     public: { storageUrl },
   }: RuntimeConfig = useRuntimeConfig()
@@ -30,16 +32,14 @@ export const useCashboxProductCardComponent = (
     },
   })
 
-  const countProp: ComputedRef<string> = computed<string>(
-    () => (state.value.isBig ? 'big_count' : 'small_count'),
-  )
+  const countProp: ComputedRef<string> = computed<string>(() => (state.value.isBig ? 'big_count' : 'small_count'))
 
   const onToggleIsSelected = () => (state.value.isSelected = !state.value.isSelected)
 
   const onAdd = () => (state.value[countProp.value] += 1)
 
   const onRemove = () => {
-    if ((state.value[countProp.value] - 1) >= 0) {
+    if (state.value[countProp.value] - 1 >= 0) {
       state.value[countProp.value] -= 1
     }
 
@@ -48,20 +48,20 @@ export const useCashboxProductCardComponent = (
     }
   }
 
-  watch(() => state.value.isSelected, (value: boolean) => {
-    if (value) {
-      return
-    }
+  watch(
+    () => state.value.isSelected,
+    (value: boolean) => {
+      if (value) {
+        return
+      }
 
-    state.value.small_count = 0
-    state.value.big_count = 0
-  }, { immediate: true })
-
-  const photo: ComputedRef<string> = computed<string>(
-    () => (image
-      ? `${storageUrl}/${image}`
-      : '/images/empty.png'),
+      state.value.small_count = 0
+      state.value.big_count = 0
+    },
+    { immediate: true },
   )
+
+  const photo: ComputedRef<string> = computed<string>(() => (image ? `${storageUrl}/${image}` : '/images/empty.png'))
 
   const onToggleIsBig = () => (state.value.isBig = !state.value.isBig)
 

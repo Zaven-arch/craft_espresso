@@ -1,6 +1,9 @@
 import { $createActionButtonItem } from '../../utils'
 
-import type { IAdminActionButtonConfig, IAdminActionButtonItem } from '../../interfaces'
+import type {
+  IAdminActionButtonConfig,
+  IAdminActionButtonItem,
+} from '../../interfaces'
 
 import { ActionButtonType } from '../../enums'
 
@@ -9,7 +12,7 @@ export default (): IAdminActionButtonConfig => {
 
   return {
     toolbar: (() => {
-      const actions:IAdminActionButtonItem[] = [
+      const actions: IAdminActionButtonItem[] = [
         $createActionButtonItem(
           'ORDERS.ACTIONS_TOOLBAR.CHANGE_STATUS',
           ActionButtonType.ORDER_CHANGE_STATUS,
@@ -36,7 +39,7 @@ export default (): IAdminActionButtonConfig => {
       return actions
     })(),
     card: (() => {
-      const actions:IAdminActionButtonItem[] = [
+      const actions: IAdminActionButtonItem[] = [
         $createActionButtonItem(
           'ORDERS.BUTTON_ACTIONS.CHANGE_STATUS',
           ActionButtonType.ORDER_CHANGE_STATUS,

@@ -20,11 +20,15 @@
         <v-img :src="photo" contain height="36" />
         <span class="tw-truncate" v-text="name" />
         <div class="tw-grid tw-gap-1">
-          <div class="tw-justify-center tw-flex tw-items-center tw-gap-0.5 tw-ml-4">
+          <div
+            class="tw-justify-center tw-flex tw-items-center tw-gap-0.5 tw-ml-4"
+          >
             <span v-number-format="smallPrice" />
             <svgo-dram-icon width="16" />
           </div>
-          <div class="tw-justify-center tw-flex tw-items-center tw-gap-0.5 tw-ml-4">
+          <div
+            class="tw-justify-center tw-flex tw-items-center tw-gap-0.5 tw-ml-4"
+          >
             <span v-number-format="bigPrice" />
             <svgo-dram-icon width="16" />
           </div>
@@ -46,7 +50,10 @@
             :class="cardStatus?.color"
             class="app-status-chip"
           >
-            <span class="tw-truncate tw-max-w-[100px]" v-text="$t(cardStatus?.text)" />
+            <span
+              class="tw-truncate tw-max-w-[100px]"
+              v-text="$t(cardStatus?.text)"
+            />
           </v-chip>
         </div>
         <div>
@@ -58,7 +65,11 @@
 </template>
 
 <script lang="ts" setup>
-import { type IProductCardProps, defaultProps, useProductCardComponent } from './index.script'
+import {
+  type IProductCardProps,
+  defaultProps,
+  useProductCardComponent,
+} from './index.script'
 
 const props = withDefaults(
   defineProps<Partial<IProductCardProps>>(),

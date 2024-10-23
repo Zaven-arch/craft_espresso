@@ -94,9 +94,14 @@ export const useManagementPage = () => {
     try {
       setSubmitLoading(true)
 
-      _payload.isEdit ? await update(_payload.form) : await create(_payload.form)
+      _payload.isEdit
+        ? await update(_payload.form)
+        : await create(_payload.form)
 
-      $open(Colors.GREEN, t('SNACKBAR.DATA_MANAGEMENT', Number(_payload.isEdit)))
+      $open(
+        Colors.GREEN,
+        t('SNACKBAR.DATA_MANAGEMENT', Number(_payload.isEdit)),
+      )
 
       await onRefreshShownData()
     } catch (e: any) {

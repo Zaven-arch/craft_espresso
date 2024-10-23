@@ -49,9 +49,7 @@ export const useLogin = (): IUseLogin => {
     } catch (e: any) {
       $open(
         Colors.RED,
-        Array.isArray(e?.message)
-          ? e?.message?.join(', ')
-          : e?.message,
+        Array.isArray(e?.message) ? e?.message?.join(', ') : e?.message,
       )
     } finally {
       setLoading(false)

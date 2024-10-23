@@ -21,9 +21,7 @@
                     hide-details="auto"
                     variant="outlined"
                     bg-color="white"
-                    class="sm:tw-min-h-[48px] [&>div>div>div:last-child_*]:tw-opacity-100
-                    [&>div>div>div:last-child_*]:tw-border-app-primary-red xs:tw-min-h-[36px]
-                    app-clearable-icon--primary-red"
+                    class="sm:tw-min-h-[48px] [&>div>div>div:last-child_*]:tw-opacity-100 [&>div>div>div:last-child_*]:tw-border-app-primary-red xs:tw-min-h-[36px] app-clearable-icon--primary-red"
                     @keypress.enter="onSearchHandler"
                     @click:clear="onSearchHandler"
                   />
@@ -60,9 +58,7 @@
             </template>
             <template #titleItems>
               <div
-                class="tw-grid tw-text-center tw-font-bold tw-text-app-grey-font tw-gap-3
-                tw-grid-cols-[1fr_repeat(3,_150px)_50px_130px]
-                tw-text-xs tw-items-center"
+                class="tw-grid tw-text-center tw-font-bold tw-text-app-grey-font tw-gap-3 tw-grid-cols-[1fr_repeat(3,_150px)_50px_130px] tw-text-xs tw-items-center"
               >
                 <div
                   v-for="(title, i) in $tm('MANAGEMENT.GRID_TITLES')"
@@ -122,7 +118,10 @@
         </div>
       </v-col>
     </v-slide-y-transition>
-    <management-data-modal :loading="submitLoading" @on-submit="onSubmitHandler" />
+    <management-data-modal
+      :loading="submitLoading"
+      @on-submit="onSubmitHandler"
+    />
   </v-row>
 </template>
 
@@ -132,7 +131,6 @@ import { useManagementOutputPage } from './index.script'
 definePageMeta({
   middleware: ['only-authorized-middleware'],
 })
-
 
 const {
   color,

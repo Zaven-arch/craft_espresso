@@ -62,10 +62,7 @@
               </template>
             </v-scroll-y-transition>
             <v-scale-transition leave-absolute hide-on-leave>
-              <empty-data
-                v-if="!state.data?.length"
-                src="/images/empty.png"
-              />
+              <empty-data v-if="!state.data?.length" src="/images/empty.png" />
             </v-scale-transition>
           </div>
         </v-sheet>

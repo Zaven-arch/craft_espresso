@@ -18,7 +18,9 @@
           />
         </div>
         <span class="tw-truncate" v-text="name" />
-        <div class="tw-justify-center tw-flex tw-items-center tw-gap-0.5 tw-ml-4">
+        <div
+          class="tw-justify-center tw-flex tw-items-center tw-gap-0.5 tw-ml-4"
+        >
           <span v-number-format="price" />
           <svgo-dram-icon width="16" />
         </div>
@@ -36,7 +38,11 @@
 </template>
 
 <script lang="ts" setup>
-import { type IManagementCardProps, defaultProps, useManagementCardComponent } from './index.script'
+import {
+  type IManagementCardProps,
+  defaultProps,
+  useManagementCardComponent,
+} from './index.script'
 
 const props = withDefaults(
   defineProps<Partial<IManagementCardProps>>(),

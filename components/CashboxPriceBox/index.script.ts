@@ -13,17 +13,15 @@ export const defaultProps = {
 export const useCashboxPriceBoxComponent = (props: ICashboxPriceBoxProps) => {
   const { price }: ToRefs<ICashboxPriceBoxProps> = toRefs(props)
 
-  const change: Ref<number| string> = ref<number| string>('')
+  const change: Ref<number | string> = ref<number | string>('')
 
-  const changeResult: ComputedRef<number> = computed<number>(
-    () => {
-      if (!change.value) {
-        return 0
-      }
+  const changeResult: ComputedRef<number> = computed<number>(() => {
+    if (!change.value) {
+      return 0
+    }
 
-      return Number(change.value) - price.value
-    },
-  )
+    return Number(change.value) - price.value
+  })
 
   return {
     change,

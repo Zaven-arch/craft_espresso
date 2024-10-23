@@ -21,12 +21,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useTextCopyComponent, defaultProps, type ITextCopyProps } from './index.script'
-
-withDefaults(
-  defineProps<Partial<ITextCopyProps>>(),
+import {
+  useTextCopyComponent,
   defaultProps,
-)
+  type ITextCopyProps,
+} from './index.script'
+
+withDefaults(defineProps<Partial<ITextCopyProps>>(), defaultProps)
 
 const { doCopy, icon, isCopied } = useTextCopyComponent()
 </script>

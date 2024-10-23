@@ -19,9 +19,5 @@
 </template>
 
 <script lang="ts" setup>
-const {
-  color,
-  logoutLoading,
-  onLogoutHandler,
-} = await useDefaultLayout()
+const { color, logoutLoading, onLogoutHandler } = await useDefaultLayout()
 </script>

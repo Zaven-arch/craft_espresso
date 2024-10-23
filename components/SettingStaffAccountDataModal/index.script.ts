@@ -32,12 +32,10 @@ export const useSettingStaffAccountDataModal = async () => {
     setIsNeedToRefresh,
   } = useStaffAccountsSetting({ t })
 
-  const permissionItems: any[] = [UserRole.STAFF].map(
-    (value: UserRole) => ({
-      text: t(`SETTING_STAFF.PERMISSION.${value}`),
-      value,
-    }),
-  )
+  const permissionItems: any[] = [UserRole.STAFF].map((value: UserRole) => ({
+    text: t(`SETTING_STAFF.PERMISSION.${value}`),
+    value,
+  }))
 
   watchEffect(() => !dataModal.isOpen.value && setActiveData())
 

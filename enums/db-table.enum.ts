@@ -5,5 +5,5 @@ export enum DBTable {
   MANAGEMENT = 'management',
   PRODUCTS = 'products',
   ORDERS = 'orders',
-  ORDER_PRODUCTS = 'order_products'
+  ORDER_PRODUCTS = 'order_products',
 }

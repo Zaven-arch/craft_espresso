@@ -57,8 +57,5 @@ const props = withDefaults(
 )
 const emits = defineEmits<IEmits>()
 
-const state = useAdminActionButtonComponent(
-  props,
-  emits,
-)
+const state = useAdminActionButtonComponent(props, emits)
 </script>

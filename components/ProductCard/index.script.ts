@@ -1,8 +1,6 @@
 import type { RuntimeConfig } from 'nuxt/schema'
 
-import {
-  Colors, ProductType, Status,
-} from '~/enums'
+import { Colors, ProductType, Status } from '~/enums'
 
 import type { IStatusChip } from '~/interfaces'
 
@@ -27,7 +25,9 @@ export const defaultProps = {
 }
 
 export const useProductCardComponent = ({
-  type, status, image,
+  type,
+  status,
+  image,
 }: IProductCardProps) => {
   const {
     public: { storageUrl },
@@ -81,11 +81,7 @@ export const useProductCardComponent = ({
     }
   })
 
-  const photo: ComputedRef<string> = computed<string>(
-    () => (image
-      ? `${storageUrl}/${image}`
-      : '/images/empty.png'),
-  )
+  const photo: ComputedRef<string> = computed<string>(() => (image ? `${storageUrl}/${image}` : '/images/empty.png'))
 
   return {
     cardStatus,

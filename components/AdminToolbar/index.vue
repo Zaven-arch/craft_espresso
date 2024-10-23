@@ -33,13 +33,13 @@
 
 <script lang="ts" setup>
 import {
-  useAdminToolbarComponent, defaultProps, type IEmits, type IAdminToolbarProps,
+  useAdminToolbarComponent,
+  defaultProps,
+  type IEmits,
+  type IAdminToolbarProps,
 } from './index.script'
 
-withDefaults(
-  defineProps<Partial<IAdminToolbarProps>>(),
-  defaultProps,
-)
+withDefaults(defineProps<Partial<IAdminToolbarProps>>(), defaultProps)
 
 defineEmits<IEmits>()
 

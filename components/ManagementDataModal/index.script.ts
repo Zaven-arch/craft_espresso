@@ -8,7 +8,7 @@ export interface IManagementDataModalProps {
   loading: boolean
 }
 
-export type IEmits = (e:'onSubmit', value: any) => void
+export type IEmits = (e: 'onSubmit', value: any) => void
 
 export const defaultProps = {
   loading: false,
@@ -24,30 +24,34 @@ export const useManagementDataModalComponent = () => {
     form: {},
   })
 
-  watch(dataModal.isOpen, (value: boolean) => {
-    if (!value) {
-      setActiveData()
+  watch(
+    dataModal.isOpen,
+    (value: boolean) => {
+      if (!value) {
+        setActiveData()
 
-      return state.form = {}
-    }
+        return (state.form = {})
+      }
 
-    if (!managementState.value.active) {
-      return
-    }
+      if (!managementState.value.active) {
+        return
+      }
 
-    state.isEdit = true
+      state.isEdit = true
 
-    state.form = {
-      ...managementState.value.active,
-    }
-  }, { immediate: true })
+      state.form = {
+        ...managementState.value.active,
+      }
+    },
+    { immediate: true },
+  )
 
-  const typeItems: any[] = Object
-    .entries(ManagementType)
-    .map(([key, value]) => ({
+  const typeItems: any[] = Object.entries(ManagementType).map(
+    ([key, value]) => ({
       text: t(`MANAGEMENT.TYPE.${key}`),
       value,
-    }))
+    }),
+  )
 
   const onGramHandler = () => {
     state.form.is_gram = !state.form.is_gram

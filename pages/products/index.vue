@@ -93,7 +93,7 @@
                 <div
                   v-for="(title, i) in $tm('PRODUCTS.GRID_TITLES')"
                   :key="$rt(title)"
-                  :class="{ 'tw-text-left tw-pl-3 tw-col-start-2': !i, }"
+                  :class="{ 'tw-text-left tw-pl-3 tw-col-start-2': !i }"
                   v-text="$rt(title)"
                 />
               </div>

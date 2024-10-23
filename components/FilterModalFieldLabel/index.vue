@@ -8,8 +8,5 @@
 <script lang="ts" setup>
 import { defaultProps, type IFilterModalFieldLabelProps } from './index.script'
 
-withDefaults(
-  defineProps<Partial<IFilterModalFieldLabelProps>>(),
-  defaultProps,
-)
+withDefaults(defineProps<Partial<IFilterModalFieldLabelProps>>(), defaultProps)
 </script>

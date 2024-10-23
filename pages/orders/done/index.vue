@@ -31,7 +31,7 @@
                 <div
                   v-for="(title, i) in $tm('ORDERS.GRID_TITLES')"
                   :key="$rt(title)"
-                  :class="{ 'tw-text-left tw-pl-5': !i, }"
+                  :class="{ 'tw-text-left tw-pl-5': !i }"
                   v-text="$rt(title)"
                 />
               </div>
@@ -43,10 +43,7 @@
           <div v-if="!pending">
             <v-list bg-color="transparent">
               <v-scroll-y-transition group leave-absolute hide-on-leave>
-                <template
-                  v-for="item in state.data"
-                  :key="`order-${item.id}`"
-                >
+                <template v-for="item in state.data" :key="`order-${item.id}`">
                   <order-card
                     :id="item.id"
                     :checkbox-state="checkboxRef.checkbox?.state"

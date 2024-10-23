@@ -46,7 +46,7 @@ export class OrdersService extends BaseService {
     const preparedDataOrdersProducts: any[] = []
 
     const preparedDataOrders = data.map((item: any) => {
-      item.products.forEach((product:any) => {
+      item.products.forEach((product: any) => {
         preparedDataOrdersProducts.push({
           ID: product.id,
           Order: item.order,
@@ -69,17 +69,26 @@ export class OrdersService extends BaseService {
       }
     })
 
-    const resultData = [{
-      'Start Date': filters?.startDate ? $dateFormat(filters.startDate, DateFormat.LongWithSlash) : 'All Period',
-      'End Date': $dateFormat(filters?.endDate || new Date().toISOString(), DateFormat.LongWithSlash),
-      Result: $numberFormat(
-        data.reduce((sum: number, order: any) => sum + order.price || 0, 0),
-      ),
-    }]
+    const resultData = [
+      {
+        'Start Date': filters?.startDate
+          ? $dateFormat(filters.startDate, DateFormat.LongWithSlash)
+          : 'All Period',
+        'End Date': $dateFormat(
+          filters?.endDate || new Date().toISOString(),
+          DateFormat.LongWithSlash,
+        ),
+        Result: $numberFormat(
+          data.reduce((sum: number, order: any) => sum + order.price || 0, 0),
+        ),
+      },
+    ]
 
     // Convert the data to worksheet format
     const worksheetOrders = XLSX.utils.json_to_sheet(preparedDataOrders)
-    const worksheetOrdersProducts = XLSX.utils.json_to_sheet(preparedDataOrdersProducts)
+    const worksheetOrdersProducts = XLSX.utils.json_to_sheet(
+      preparedDataOrdersProducts,
+    )
     const worksheetResult = XLSX.utils.json_to_sheet(resultData)
 
     // Create a new workbook
@@ -87,7 +96,11 @@ export class OrdersService extends BaseService {
 
     // Append the worksheet to the workbook
     XLSX.utils.book_append_sheet(workbook, worksheetOrders, 'Orders')
-    XLSX.utils.book_append_sheet(workbook, worksheetOrdersProducts, "Order's Products")
+    XLSX.utils.book_append_sheet(
+      workbook,
+      worksheetOrdersProducts,
+      "Order's Products",
+    )
     XLSX.utils.book_append_sheet(workbook, worksheetResult, 'Results')
 
     // Generate Excel file and trigger download
@@ -122,8 +135,7 @@ export class OrdersService extends BaseService {
       req.lte('created_at', filters?.endDate)
     }
 
-    req
-      .order('created_at', { ascending: false })
+    req.order('created_at', { ascending: false })
 
     return req
   }

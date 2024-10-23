@@ -25,11 +25,11 @@ export const useManagementOutputPage = () => {
     setType,
   } = useManagement()
 
-
-
   const { loading: pending, setLoading: setPending }: IUseLoading = useLoading()
-  const { loading: searchLoading, setLoading: setSearchLoading }: IUseLoading = useLoading()
-  const { loading: submitLoading, setLoading: setSubmitLoading }: IUseLoading = useLoading()
+  const { loading: searchLoading, setLoading: setSearchLoading }: IUseLoading =
+    useLoading()
+  const { loading: submitLoading, setLoading: setSubmitLoading }: IUseLoading =
+    useLoading()
 
   const { $open }: IUseSnackbar = useSnackbar()
 

@@ -49,7 +49,10 @@ export class StaffSettingsService extends BaseService {
   }
 
   async update(id: string, payload: Partial<IStaffPayload>) {
-    const { data, error } = await this.supabase.auth.admin.updateUserById(id, payload)
+    const { data, error } = await this.supabase.auth.admin.updateUserById(
+      id,
+      payload,
+    )
 
     if (error) {
       throw error

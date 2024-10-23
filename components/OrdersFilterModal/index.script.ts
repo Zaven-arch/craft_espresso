@@ -9,14 +9,12 @@ export type IEmits = (e: 'onSubmit') => void
 export const useOrdersFilterModalComponent = (emits: IEmits) => {
   const { t } = useI18n()
 
-  const paidStatusItems: any[] = [
-    Status.ALL,
-    'YES',
-    'NO',
-  ].map((value: string) => ({
-    text: t(`ORDERS.PAID.${value || 'ALL'}`),
-    value,
-  }))
+  const paidStatusItems: any[] = [Status.ALL, 'YES', 'NO'].map(
+    (value: string) => ({
+      text: t(`ORDERS.PAID.${value || 'ALL'}`),
+      value,
+    }),
+  )
 
   const { state, filterModal } = useOrders()
 

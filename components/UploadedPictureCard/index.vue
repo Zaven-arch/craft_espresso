@@ -37,7 +37,5 @@ const props = withDefaults(
 )
 defineEmits<IEmits>()
 
-const { filename } = useUploadedPictureCardComponent(
-  props,
-)
+const { filename } = useUploadedPictureCardComponent(props)
 </script>

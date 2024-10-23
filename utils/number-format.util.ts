@@ -9,5 +9,5 @@ export function numberFormat(
     return text
   }
 
-  return this.innerText = text
+  return (this.innerText = text)
 }

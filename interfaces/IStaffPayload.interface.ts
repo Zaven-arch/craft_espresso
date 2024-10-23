@@ -5,7 +5,7 @@ export interface IStaffPayload {
   password: string
   email_confirm: boolean
   user_metadata: {
-    role?: UserRole,
+    role?: UserRole
     status?: Extract<Status, Status.DISABLE | Status.ENABLE>
   }
 }

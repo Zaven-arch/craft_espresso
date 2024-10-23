@@ -1,6 +1,9 @@
 import { $createActionButtonItem } from '../../utils'
 
-import type { IAdminActionButtonConfig, IAdminActionButtonItem } from '../../interfaces'
+import type {
+  IAdminActionButtonConfig,
+  IAdminActionButtonItem,
+} from '../../interfaces'
 
 import { ActionButtonType } from '../../enums'
 
@@ -12,17 +15,21 @@ export default (): IAdminActionButtonConfig => {
       const actions: IAdminActionButtonItem[] = []
 
       if (isHaveAddAction && isOwner.value) {
-        actions.push($createActionButtonItem(
-          'PRODUCTS.ACTIONS_TOOLBAR.ADD',
-          ActionButtonType.PRODUCTS_ADD,
-        ))
+        actions.push(
+          $createActionButtonItem(
+            'PRODUCTS.ACTIONS_TOOLBAR.ADD',
+            ActionButtonType.PRODUCTS_ADD,
+          ),
+        )
       }
 
       if (isOwner.value) {
-        actions.push($createActionButtonItem(
-          'PRODUCTS.ACTIONS_TOOLBAR.DELETE',
-          ActionButtonType.PRODUCTS_DELETE,
-        ))
+        actions.push(
+          $createActionButtonItem(
+            'PRODUCTS.ACTIONS_TOOLBAR.DELETE',
+            ActionButtonType.PRODUCTS_DELETE,
+          ),
+        )
       }
 
       return actions

@@ -6,7 +6,11 @@ import { useDisplay } from 'vuetify'
 
 import { $getPath } from '~/utils'
 
-import type { IUseNavigationDrawer, IUseNavbar, INavbarItem } from '~/interfaces'
+import type {
+  IUseNavigationDrawer,
+  IUseNavbar,
+  INavbarItem,
+} from '~/interfaces'
 
 export const useNavbarComponent = () => {
   const localePath = useLocalePath()

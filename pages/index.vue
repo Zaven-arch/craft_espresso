@@ -93,7 +93,8 @@
       >
         <v-card-text
           :class="{
-            'tw-min-h-full tw-grid tw-place-items-center': pending || !productsState.data?.length
+            'tw-min-h-full tw-grid tw-place-items-center':
+              pending || !productsState.data?.length,
           }"
         >
           <v-row>
@@ -129,7 +130,7 @@
   </v-row>
 </template>
 
-<script  lang="ts" setup>
+<script lang="ts" setup>
 import { useCashboxPage } from './cashbox/index.script'
 
 definePageMeta({
@@ -137,8 +138,18 @@ definePageMeta({
 })
 
 const {
-  color, productTypeItems, setProductType, isTypeEqual, isCreditCard, onSubmitHandler,
-  pending, productsState, state, price, lightBlue, togglePaymentMethod, loading,
+  color,
+  productTypeItems,
+  setProductType,
+  isTypeEqual,
+  isCreditCard,
+  onSubmitHandler,
+  pending,
+  productsState,
+  state,
+  price,
+  lightBlue,
+  togglePaymentMethod,
+  loading,
 } = useCashboxPage()
-
 </script>

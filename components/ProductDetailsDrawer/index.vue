@@ -16,7 +16,10 @@
         <div class="tw-flex tw-text-white">
           <span class="tw-max-w-[370px] tw-flex tw-gap-1.5">
             <span v-text="$t('PRODUCT_DETAILS.TITLE')" />
-            <span class="tw-text-white/80 tw-truncate" v-text="state.active?.name" />
+            <span
+              class="tw-text-white/80 tw-truncate"
+              v-text="state.active?.name"
+            />
           </span>
           <v-img :src="photo" contain width="36" height="36" />
         </div>
@@ -103,19 +106,20 @@
             <v-btn
               :color="color"
               :loading="loading"
-              :class="[$vuetify.display.width < 425 ? 'tw-mt-3' : 'tw-ml-3',
-                       { '!tw-text-white' : !isReadOnly
-                       }
+              :class="[
+                $vuetify.display.width < 425 ? 'tw-mt-3' : 'tw-ml-3',
+                { '!tw-text-white': !isReadOnly },
               ]"
-              :variant="isReadOnly? 'tonal' : 'elevated'"
+              :variant="isReadOnly ? 'tonal' : 'elevated'"
               flat
               min-width="120"
               class="!tw-normal-case !font-normal"
               @click="onEditHandler"
             >
-              {{ isReadOnly
-                ? $t('PRODUCT_DETAILS.BUTTON.EDIT') :
-                  $t('ACTIONS_MODAL.DATA.BUTTON', 0)
+              {{
+                isReadOnly
+                  ? $t('PRODUCT_DETAILS.BUTTON.EDIT')
+                  : $t('ACTIONS_MODAL.DATA.BUTTON', 0)
               }}
             </v-btn>
           </v-col>
@@ -126,13 +130,23 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  useProductDetailsDrawerComponent,
-} from './index.script'
+import { useProductDetailsDrawerComponent } from './index.script'
 
 const {
-  isOpen, state, details, cardType, photo, loading, isBig, onToggleSize,
-  color, close, onAddItemHandler, onRemoveHandler, isReadOnly, onEditHandler, onCloseModal,
-
+  isOpen,
+  state,
+  details,
+  cardType,
+  photo,
+  loading,
+  isBig,
+  onToggleSize,
+  color,
+  close,
+  onAddItemHandler,
+  onRemoveHandler,
+  isReadOnly,
+  onEditHandler,
+  onCloseModal,
 } = useProductDetailsDrawerComponent()
 </script>

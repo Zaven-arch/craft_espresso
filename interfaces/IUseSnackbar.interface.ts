@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 
-import { ISnackbarState } from './ISnackbarState.interface'
-
 import { ToastPosition, Colors } from '~/enums'
+import type{ ISnackbarState } from './ISnackbarState.interface'
 
 export interface IUseSnackbar {
   $open(color: Colors, message: string): void

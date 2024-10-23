@@ -20,7 +20,12 @@
                 class="tw-w-full tw-flex tw-items-center tw-justify-center
                 tw-gap-1.5 tw-select-none tw-mb-2"
               >
-                <img src="/images/logo.png" alt="app logo" eager class="!tw-w-7">
+                <img
+                  src="/images/logo.png"
+                  alt="app logo"
+                  eager
+                  class="!tw-w-7"
+                >
                 <span
                   class="tw-text-grey-font tw-text-2xl tw-pt-1.5"
                   v-text="$t('META.NAME')"

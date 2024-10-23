@@ -28,6 +28,5 @@ export const useAdminExcelExportModalComponent = () => {
   return {
     state,
     color: $getColor(Colors.PRIMARY_RED),
-
   }
 }

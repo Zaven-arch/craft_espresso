@@ -3,21 +3,25 @@ import {
 } from '~/enums'
 
 import type {
-  IOrder, IProduct, IUseLoading, IUseSnackbar, IOrderProducts,
+  IOrder,
+  IProduct,
+  IUseLoading,
+  IUseSnackbar,
+  IOrderProducts,
 } from '~/interfaces'
 
-import { ProductsService, OrdersService, OrderProductsService } from '~/services'
+import {
+  ProductsService,
+  OrdersService,
+  OrderProductsService,
+} from '~/services'
 
 import { $getColor, $generateOrder } from '~/utils'
 
 export const useCashboxPage = () => {
   const { t } = useI18n()
 
-  const {
-    state: productsState,
-    setType,
-    setData,
-  } = useProducts()
+  const { state: productsState, setType, setData } = useProducts()
 
   const { state: ordersState } = useOrders()
 
@@ -36,9 +40,7 @@ export const useCashboxPage = () => {
 
   const { $open }: IUseSnackbar = useSnackbar()
 
-  const {
-    getList,
-  } = new ProductsService()
+  const { getList } = new ProductsService()
 
   const { create: createOrder } = new OrdersService()
 
@@ -76,37 +78,38 @@ export const useCashboxPage = () => {
     }
   }
 
-  const price = computed(() => Object.entries(state.products).reduce(
-    (sum: number, item: any[]) => {
-      if (!item[1].isSelected) {
-        return sum
-      }
-
-      if (item[1].big_count) {
-        sum += item[1].big_price * item[1].big_count
-      }
-
-      if (item[1].small_count) {
-        sum += item[1].small_price * item[1].small_count
-      }
-
+  const price = computed(() => Object.entries(state.products).reduce((sum: number, item: any[]) => {
+    if (!item[1].isSelected) {
       return sum
+    }
+
+    if (item[1].big_count) {
+      sum += item[1].big_price * item[1].big_count
+    }
+
+    if (item[1].small_count) {
+      sum += item[1].small_price * item[1].small_count
+    }
+
+    return sum
+  }, 0))
+
+  watch(
+    () => state.type,
+    async (value: ProductType) => {
+      setType(value)
+
+      await onGetListData()
     },
-    0,
-  ))
+    { immediate: true },
+  )
 
-  watch(() => state.type, async (value: ProductType) => {
-    setType(value)
-
-    await onGetListData()
-  }, { immediate: true })
-
-  const productTypeItems: any[] = Object
-    .entries(ProductType)
-    .map(([key, value]) => ({
+  const productTypeItems: any[] = Object.entries(ProductType).map(
+    ([key, value]) => ({
       text: t(`PRODUCTS.TYPE.${key}`),
       value,
-    }))
+    }),
+  )
 
   const setProductType = (value: ProductType) => (state.type = value)
 
@@ -147,17 +150,13 @@ export const useCashboxPage = () => {
       const rawProducts = Object.entries(state.products)
 
       const orderProductsPayload: IOrderProducts[] = rawProducts
-        .filter(
-          ([, item]: any) => item.isSelected,
-        )
-        .map(
-          ([productId, item]: any) => ({
-            order_id: data.id,
-            product_id: productId,
-            small_count: item.small_count,
-            big_count: item.big_count,
-          }),
-        )
+        .filter(([, item]: any) => item.isSelected)
+        .map(([productId, item]: any) => ({
+          order_id: data.id,
+          product_id: productId,
+          small_count: item.small_count,
+          big_count: item.big_count,
+        }))
 
       await createOrderProducts(orderProductsPayload)
 

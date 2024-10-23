@@ -47,12 +47,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useNavigationDrawerItemComponent, defaultProps, type INavigationDrawerItemProps } from './index.script'
-
-withDefaults(
-  defineProps<Partial<INavigationDrawerItemProps>>(),
+import {
+  useNavigationDrawerItemComponent,
   defaultProps,
-)
+  type INavigationDrawerItemProps,
+} from './index.script'
+
+withDefaults(defineProps<Partial<INavigationDrawerItemProps>>(), defaultProps)
 
 const { $drawer, setTab, $getPath } = useNavigationDrawerItemComponent()
 </script>

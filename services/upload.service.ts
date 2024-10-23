@@ -28,13 +28,16 @@ export class UploadService {
   }
 
   async save(file: File) {
-    const fileType: string | undefined = Object
-      .entries(FileType)
-      ?.find((item) => item[1] === file.type)?.[0]
+    const fileType: string | undefined = Object.entries(FileType)?.find(
+      (item) => item[1] === file.type,
+    )?.[0]
 
     const { data, error } = await this.supabase.storage
       .from(this.BUCKET_NAME)
-      .upload(`${uuid()}__${Date.now().toString(16)}${FileExtension[fileType as keyof typeof FileExtension]}`, file)
+      .upload(
+        `${uuid()}__${Date.now().toString(16)}${FileExtension[fileType as keyof typeof FileExtension]}`,
+        file,
+      )
 
     if (error) {
       throw error

@@ -7,7 +7,10 @@ import { $getColor } from '~/utils'
 import { Colors, ProductType } from '~/enums'
 
 import type {
-  IProductDetail, IStatusChip, IUseLoading, IUseSnackbar,
+  IProductDetail,
+  IStatusChip,
+  IUseLoading,
+  IUseSnackbar,
 } from '~/interfaces'
 
 import { ProductsService } from '~/services'
@@ -25,13 +28,11 @@ export const useProductDetailsDrawerComponent = () => {
 
   const { $open }: IUseSnackbar = useSnackbar()
 
-  const {
-    update,
-  } = new ProductsService()
+  const { update } = new ProductsService()
 
-  const details:Ref<IProductDetail[]> = ref<IProductDetail[]>([])
-  const isReadOnly:Ref<boolean> = ref<boolean>(true)
-  const isBig:Ref<boolean> = ref<boolean>(false)
+  const details: Ref<IProductDetail[]> = ref<IProductDetail[]>([])
+  const isReadOnly: Ref<boolean> = ref<boolean>(true)
+  const isBig: Ref<boolean> = ref<boolean>(false)
 
   const onToggleSize = () => (isBig.value = !isBig.value)
 
@@ -64,11 +65,9 @@ export const useProductDetailsDrawerComponent = () => {
     }
   })
 
-  const photo: ComputedRef<string> = computed<string>(
-    () => (state.value.active?.image
-      ? `${storageUrl}/${state.value.active?.image}`
-      : '/images/empty.png'),
-  )
+  const photo: ComputedRef<string> = computed<string>(() => (state.value.active?.image
+    ? `${storageUrl}/${state.value.active?.image}`
+    : '/images/empty.png'))
 
   const onAddItemHandler = () => details.value.push({
     id: uuid(),
@@ -120,27 +119,39 @@ export const useProductDetailsDrawerComponent = () => {
       return onToggleEditHandler(true)
     }
     if (isBig.value && state.value.active?.big_details) {
-      return details.value = JSON.parse(state.value.active.big_details || '[]')
+      return (details.value = JSON.parse(
+        state.value.active.big_details || '[]',
+      ))
     }
 
     if (!isBig.value && state.value.active?.small_details) {
-      return details.value = JSON.parse(state.value.active.small_details || '[]')
+      return (details.value = JSON.parse(
+        state.value.active.small_details || '[]',
+      ))
     }
   })
 
-  watch(isBig, (value: boolean) => {
-    if (value && state.value.active?.big_details) {
-      return details.value = JSON.parse(state.value.active.big_details || '[]')
-    }
+  watch(
+    isBig,
+    (value: boolean) => {
+      if (value && state.value.active?.big_details) {
+        return (details.value = JSON.parse(
+          state.value.active.big_details || '[]',
+        ))
+      }
 
-    if (!value && state.value.active?.small_details) {
-      return details.value = JSON.parse(state.value.active.small_details || '[]')
-    }
+      if (!value && state.value.active?.small_details) {
+        return (details.value = JSON.parse(
+          state.value.active.small_details || '[]',
+        ))
+      }
 
-    details.value = []
+      details.value = []
 
-    details.value = []
-  }, { immediate: true })
+      details.value = []
+    },
+    { immediate: true },
+  )
 
   return {
     state,

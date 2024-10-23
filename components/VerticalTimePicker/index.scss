@@ -19,7 +19,7 @@
       top: calc(50% + 50px);
     }
     &::before {
-      top: calc(50% + 7px)
+      top: calc(50% + 7px);
     }
   }
 }
@@ -28,7 +28,7 @@ $height: 44px;
 
 @mixin translate-y($i) {
   transform: translateY(calc(#{$i} * #{$height}));
-  transition: .1s;
+  transition: 0.1s;
 }
 
 .hours {

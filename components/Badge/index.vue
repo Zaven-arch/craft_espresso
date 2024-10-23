@@ -18,8 +18,5 @@
 <script lang="ts" setup>
 import { defaultProps, type IBadgeProps } from './index.script'
 
-withDefaults(
-  defineProps<Partial<IBadgeProps>>(),
-  defaultProps,
-)
+withDefaults(defineProps<Partial<IBadgeProps>>(), defaultProps)
 </script>

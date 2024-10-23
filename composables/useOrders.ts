@@ -2,7 +2,11 @@
 
 import { ActionButtonType, Status } from '~/enums'
 
-import type { IUseCheckboxes, IUseModalWindow, IUsePagination } from '~/interfaces'
+import type {
+  IUseCheckboxes,
+  IUseModalWindow,
+  IUsePagination,
+} from '~/interfaces'
 import type { TIsPaid } from '~/types'
 
 const deleteModal: IUseModalWindow = useModalWindow()
@@ -72,7 +76,6 @@ export const useOrders = () => {
 
         break
       case ActionButtonType.ORDERS_CHANGE_TO_PAID:
-
         changeToPaidModal.open()
 
         break

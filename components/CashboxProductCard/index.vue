@@ -8,7 +8,9 @@
     class="tw-cursor-pointer tw-relative tw-overflow-hidden !tw-select-none"
     @click="onToggleIsSelected"
   >
-    <v-card-text class="tw-grid tw-place-items-center tw-gap-2 !tw-p-2 tw-h-full">
+    <v-card-text
+      class="tw-grid tw-place-items-center tw-gap-2 !tw-p-2 tw-h-full"
+    >
       <v-img :src="photo" width="36" height="70" />
       <div class="tw-truncate tw-max-w-[100px]">
         <span class="tw-font-semibold tw-text-xs" v-text="text" />
@@ -40,7 +42,10 @@
           class="!tw-p-1 !tw-flex !tw-items-center"
           @click.stop="onRemove"
         />
-        <span class="tw-font-semibold tw-text-white tw-text-lg" v-text="state[countProp]" />
+        <span
+          class="tw-font-semibold tw-text-white tw-text-lg"
+          v-text="state[countProp]"
+        />
         <v-btn
           height="20"
           rounded
@@ -54,9 +59,11 @@
   </v-card>
 </template>
 
-<script  lang="ts" setup>
+<script lang="ts" setup>
 import {
-  useCashboxProductCardComponent, defaultProps, type ICashboxProductCardComponentProps,
+  useCashboxProductCardComponent,
+  defaultProps,
+  type ICashboxProductCardComponentProps,
 } from './index.script'
 
 const props = withDefaults(
@@ -65,8 +72,14 @@ const props = withDefaults(
 )
 
 const {
-  color, onToggleIsSelected, state, photo,
-  onAdd, countProp,
-  onRemove, onToggleIsBig, primaryBlack,
+  color,
+  onToggleIsSelected,
+  state,
+  photo,
+  onAdd,
+  countProp,
+  onRemove,
+  onToggleIsBig,
+  primaryBlack,
 } = useCashboxProductCardComponent(props)
 </script>

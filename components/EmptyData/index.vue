@@ -12,7 +12,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useEmptyDataComponent, defaultProps, type IEmptyDataProps } from './index.script'
+import {
+  useEmptyDataComponent,
+  defaultProps,
+  type IEmptyDataProps,
+} from './index.script'
 
 const props = withDefaults(
   defineProps<Partial<IEmptyDataProps>>(),

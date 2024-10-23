@@ -32,7 +32,6 @@ export const useProductDetailItemComponent = (
     set(value) {
       emits('update:modelValue', value)
     },
-
   })
 
   const onGramHandler = () => (form.value.is_gram = !form.value.is_gram)

@@ -96,7 +96,5 @@ const props = withDefaults(
 
 defineEmits<IEmits>()
 
-const { color, radio } = useAdminChangesModalComponent(
-  props,
-)
+const { color, radio } = useAdminChangesModalComponent(props)
 </script>

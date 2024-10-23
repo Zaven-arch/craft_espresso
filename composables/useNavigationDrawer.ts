@@ -1,13 +1,12 @@
 /* eslint-disable no-undef */
 
-import { useBadge } from './useBadge'
-
 import type {
   INavigationDrawer,
   INavigationDrawerItem,
   INavigationDrawerColors,
   IUseNavigationDrawer,
 } from '~/interfaces'
+import { useBadge } from './useBadge'
 
 const $drawer: INavigationDrawer = reactive<INavigationDrawer>({
   isOpen: false,

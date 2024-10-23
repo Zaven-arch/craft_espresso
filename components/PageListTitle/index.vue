@@ -47,13 +47,13 @@
 
 <script lang="ts" setup>
 import {
-  usePageListTitleComponent, defaultProps, type IEmits, type IPageListTitleProps,
+  usePageListTitleComponent,
+  defaultProps,
+  type IEmits,
+  type IPageListTitleProps,
 } from './index.script'
 
-withDefaults(
-  defineProps<Partial<IPageListTitleProps>>(),
-  defaultProps,
-)
+withDefaults(defineProps<Partial<IPageListTitleProps>>(), defaultProps)
 
 defineEmits<IEmits>()
 

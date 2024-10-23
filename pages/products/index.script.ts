@@ -134,7 +134,7 @@ export const useProductsPage = () => {
       }
 
       if (_payload.form.image?.length) {
-        const { path }:any = await save(_payload.form.image?.[0]?.file)
+        const { path }: any = await save(_payload.form.image?.[0]?.file)
 
         _payload.form.image = path
       } else {
@@ -143,7 +143,9 @@ export const useProductsPage = () => {
 
       delete _payload.form.oldImage
 
-      _payload.isEdit ? await update(_payload.form) : await create(_payload.form)
+      _payload.isEdit
+        ? await update(_payload.form)
+        : await create(_payload.form)
 
       $open(Colors.GREEN, t('SNACKBAR.DATA_PRODUCTS', Number(_payload.isEdit)))
 
@@ -162,14 +164,12 @@ export const useProductsPage = () => {
     () => onSearchHandler('status'),
   )
 
-  const statusItems: any[] = [
-    Status.ALL,
-    Status.ENABLE,
-    Status.DISABLE,
-  ].map((value: Status) => ({
-    text: t(`STATUS.${value || 'ALL'}`),
-    value,
-  }))
+  const statusItems: any[] = [Status.ALL, Status.ENABLE, Status.DISABLE].map(
+    (value: Status) => ({
+      text: t(`STATUS.${value || 'ALL'}`),
+      value,
+    }),
+  )
 
   return {
     page,

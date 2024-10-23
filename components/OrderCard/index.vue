@@ -26,9 +26,11 @@
             <div class="tw-flex tw-items-center tw-gap-0.5 tw-grow">
               <div>
                 <v-img
-                  :src="product.image
-                    ? `${storageUrl}/${product.image}`
-                    : '/images/empty.png'"
+                  :src="
+                    product.image
+                      ? `${storageUrl}/${product.image}`
+                      : '/images/empty.png'
+                  "
                   contain
                   width="18"
                   height="18"
@@ -53,18 +55,25 @@
               <div class="tw-flex tw-items-center tw-gap-1 tw-justify-between">
                 <span
                   class="tw-grow tw-text-center tw-pr-2.5"
-                  v-html="product.small_count ? `x${product.small_count}` : '&mdash;'"
+                  v-html="
+                    product.small_count ? `x${product.small_count}` : '&mdash;'
+                  "
                 />
                 /
                 <span
                   class="tw-grow tw-text-center tw-pr-2.5"
-                  v-html="product.big_count ? `x${product.big_count}` : '&mdash;'"
+                  v-html="
+                    product.big_count ? `x${product.big_count}` : '&mdash;'
+                  "
                 />
               </div>
             </div>
           </div>
         </div>
-        <span class="tw-font-semibold tw-text-lg tw-text-center" v-text="order" />
+        <span
+          class="tw-font-semibold tw-text-lg tw-text-center"
+          v-text="order"
+        />
         <div
           class="tw-justify-center tw-font-semibold tw-text-lg tw-flex tw-items-center tw-gap-0.5
           tw-ml-4"
@@ -73,7 +82,10 @@
           <svgo-dram-icon width="16" />
         </div>
         <div class="tw-text-center">
-          <span class="tw-font-semibold tw-text-lg" v-text="paymentMethodText" />
+          <span
+            class="tw-font-semibold tw-text-lg"
+            v-text="paymentMethodText"
+          />
         </div>
         <div class="tw-relative">
           <v-chip
@@ -82,17 +94,20 @@
             :class="cardStatus?.color"
             class="app-status-chip"
           >
-            <span class="tw-truncate tw-max-w-[100px]" v-text="$t(cardStatus?.text)" />
+            <span
+              class="tw-truncate tw-max-w-[100px]"
+              v-text="$t(cardStatus?.text)"
+            />
           </v-chip>
-          <svgo-paid-icon v-if="isPaidIcon" class="tw-w-6 tw-absolute tw-top-1.5 tw-right-1" />
+          <svgo-paid-icon
+            v-if="isPaidIcon"
+            class="tw-w-6 tw-absolute tw-top-1.5 tw-right-1"
+          />
         </div>
         <div>
           <slot name="actionButton" />
         </div>
-        <div
-          v-if="memo"
-          class="tw-col-span-full"
-        >
+        <div v-if="memo" class="tw-col-span-full">
           <admin-card-description
             :label="$t('ORDERS.ADMIN_MEMO')"
             :description="memo"
@@ -106,7 +121,11 @@
 </template>
 
 <script lang="ts" setup>
-import { type IOrderCardProps, defaultProps, useOrderCardComponent } from './index.script'
+import {
+  type IOrderCardProps,
+  defaultProps,
+  useOrderCardComponent,
+} from './index.script'
 
 const props = withDefaults(
   defineProps<Partial<IOrderCardProps>>(),
@@ -114,6 +133,11 @@ const props = withDefaults(
 )
 
 const {
-  color, cardStatus, isPaidIcon, storageUrl, lightBlue, paymentMethodText,
+  color,
+  cardStatus,
+  isPaidIcon,
+  storageUrl,
+  lightBlue,
+  paymentMethodText,
 } = useOrderCardComponent(props)
 </script>

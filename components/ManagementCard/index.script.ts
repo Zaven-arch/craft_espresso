@@ -34,8 +34,10 @@ const OutputIcon = defineAsyncComponent(
 )
 
 export const useManagementCardComponent = ({
-  type, quantity, isGram, isKilogram,
-
+  type,
+  quantity,
+  isGram,
+  isKilogram,
 }: IManagementCardProps) => {
   const { t } = useI18n()
 
@@ -50,19 +52,17 @@ export const useManagementCardComponent = ({
     }
   })
 
-  const qty: ComputedRef<string> = computed<string>(
-    () => {
-      if (isGram) {
-        return `${$numberFormat(quantity)} ${t('WEIGHT.GRAM')}`
-      }
+  const qty: ComputedRef<string> = computed<string>(() => {
+    if (isGram) {
+      return `${$numberFormat(quantity)} ${t('WEIGHT.GRAM')}`
+    }
 
-      if (isKilogram) {
-        return `${$numberFormat(quantity)} ${t('WEIGHT.KILOGRAM')}`
-      }
+    if (isKilogram) {
+      return `${$numberFormat(quantity)} ${t('WEIGHT.KILOGRAM')}`
+    }
 
-      return $numberFormat(quantity)
-    },
-  )
+    return $numberFormat(quantity)
+  })
 
   return {
     iconType,

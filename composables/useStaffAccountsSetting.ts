@@ -3,7 +3,10 @@
 // import { ActionButtonType } from '~/enums'
 
 import { Status } from '~/enums'
-import type { IUseCheckboxes, IUseModalWindow, IUsePagination } from '~/interfaces'
+import type {
+  IUseModalWindow,
+  IUsePagination,
+} from '~/interfaces'
 
 const dataModal: IUseModalWindow = useModalWindow()
 const changeModal: IUseModalWindow = useModalWindow()
@@ -24,12 +27,10 @@ export const useStaffAccountsSetting = ({ t }: any) => {
   const setData = (items: any[]) => (state.value.data = items)
   const setActiveData = (id?: string) => {
     if (!id) {
-      return state.value.active = null
+      return (state.value.active = null)
     }
 
-    state.value.active = state.value.data?.find(
-      (item: any) => item.id === id,
-    )
+    state.value.active = state.value.data?.find((item: any) => item.id === id)
   }
   const setLength = (value: number) => (state.value.length = value)
   const setLimit = (value: number) => (state.value.limit = value)

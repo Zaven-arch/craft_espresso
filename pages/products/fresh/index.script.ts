@@ -24,7 +24,8 @@ export const useProductsFreshPage = () => {
     actionHandler,
     setData,
     setLength,
-    setType, dataModal,
+    setType,
+    dataModal,
   } = useProducts()
 
   const { loading: pending, setLoading: setPending }: IUseLoading = useLoading()
@@ -35,9 +36,7 @@ export const useProductsFreshPage = () => {
 
   const { $open }: IUseSnackbar = useSnackbar()
 
-  const {
-    getList, remove, update,
-  } = new ProductsService()
+  const { getList, remove, update } = new ProductsService()
   const { save, remove: removeFile } = new UploadService()
 
   const onGetListData = async () => {
@@ -132,7 +131,7 @@ export const useProductsFreshPage = () => {
       }
 
       if (_payload.form.image?.length) {
-        const { path }:any = await save(_payload.form.image?.[0]?.file)
+        const { path }: any = await save(_payload.form.image?.[0]?.file)
 
         _payload.form.image = path
       } else {
@@ -160,14 +159,12 @@ export const useProductsFreshPage = () => {
     () => onSearchHandler('status'),
   )
 
-  const statusItems: any[] = [
-    Status.ALL,
-    Status.ENABLE,
-    Status.DISABLE,
-  ].map((value: Status) => ({
-    text: t(`STATUS.${value || 'ALL'}`),
-    value,
-  }))
+  const statusItems: any[] = [Status.ALL, Status.ENABLE, Status.DISABLE].map(
+    (value: Status) => ({
+      text: t(`STATUS.${value || 'ALL'}`),
+      value,
+    }),
+  )
 
   return {
     page,

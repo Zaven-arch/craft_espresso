@@ -4,9 +4,7 @@ import { Colors, Status } from '~/enums'
 
 import { ordersActionConfig as _ordersActionConfig } from '~/configs'
 
-import {
-  OrdersService,
-} from '~/services'
+import { OrdersService } from '~/services'
 
 import type { IOrder, IUseLoading, IUseSnackbar } from '~/interfaces'
 
@@ -33,7 +31,10 @@ export const useOrdersPage = () => {
   } = useOrders()
 
   const { loading: pending, setLoading: setPending }: IUseLoading = useLoading()
-  const { loading: downloadLoading, setLoading: setDownloadLoading }: IUseLoading = useLoading()
+  const {
+    loading: downloadLoading,
+    setLoading: setDownloadLoading,
+  }: IUseLoading = useLoading()
   const { loading: deleteLoading, setLoading: setDeleteLoading }: IUseLoading = useLoading()
   const {
     loading: changeToPaidLoading,
@@ -114,7 +115,9 @@ export const useOrdersPage = () => {
 
       await Promise.all(
         checkboxRef.checkbox?.state?.value?.map(async (id: string) => {
-          const order: IOrder = state.value.data?.find((item: IOrder) => item.id === id)
+          const order: IOrder = state.value.data?.find(
+            (item: IOrder) => item.id === id,
+          )
 
           if (!order) {
             return
@@ -146,7 +149,9 @@ export const useOrdersPage = () => {
 
       await Promise.all(
         checkboxRef.checkbox?.state?.value?.map(async (id: string) => {
-          const order: IOrder = state.value.data?.find((item: IOrder) => item.id === id)
+          const order: IOrder = state.value.data?.find(
+            (item: IOrder) => item.id === id,
+          )
 
           if (!order) {
             return
@@ -175,7 +180,9 @@ export const useOrdersPage = () => {
     }
   }
 
-  const onChangeStatusHandler = async (status: Extract<Status, Status.DONE | Status.WAIT>) => {
+  const onChangeStatusHandler = async (
+    status: Extract<Status, Status.DONE | Status.WAIT>,
+  ) => {
     try {
       setChangeStatusLoading(true)
 
@@ -183,7 +190,9 @@ export const useOrdersPage = () => {
 
       await Promise.all(
         checkboxRef.checkbox?.state?.value?.map(async (id: string) => {
-          const order: IOrder = state.value.data?.find((item: IOrder) => item.id === id)
+          const order: IOrder = state.value.data?.find(
+            (item: IOrder) => item.id === id,
+          )
 
           if (!order) {
             return
@@ -233,13 +242,12 @@ export const useOrdersPage = () => {
     }
   }
 
-  const statusItems: any[] = [
-    Status.WAIT,
-    Status.DONE,
-  ].map((value: string) => ({
-    text: t(`STATUS.${value}`),
-    value,
-  }))
+  const statusItems: any[] = [Status.WAIT, Status.DONE].map(
+    (value: string) => ({
+      text: t(`STATUS.${value}`),
+      value,
+    }),
+  )
 
   return {
     page,

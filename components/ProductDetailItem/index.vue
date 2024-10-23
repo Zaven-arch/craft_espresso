@@ -73,17 +73,20 @@
   </v-card>
 </template>
 
-<script  lang="ts" setup>
+<script lang="ts" setup>
 import {
-  useProductDetailItemComponent, type IProductDetailItemProps, type IEmits, defaultProps,
+  useProductDetailItemComponent,
+  type IProductDetailItemProps,
+  type IEmits,
+  defaultProps,
 } from './index.script'
 
-const props = withDefaults(
-  defineProps<IProductDetailItemProps>(),
-  defaultProps,
-)
+const props = withDefaults(defineProps<IProductDetailItemProps>(), defaultProps)
 
 const emits = defineEmits<IEmits>()
 
-const { form, onGramHandler, color } = useProductDetailItemComponent(props, emits)
+const { form, onGramHandler, color } = useProductDetailItemComponent(
+  props,
+  emits,
+)
 </script>

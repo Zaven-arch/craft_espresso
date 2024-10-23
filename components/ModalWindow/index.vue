@@ -50,8 +50,5 @@ const props = withDefaults(
 )
 const emits = defineEmits<IEmits>()
 
-const { isOpen } = useModalWindowComponent(
-  props,
-  emits,
-)
+const { isOpen } = useModalWindowComponent(props, emits)
 </script>

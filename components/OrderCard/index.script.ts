@@ -1,8 +1,6 @@
 import type { RuntimeConfig } from 'nuxt/schema'
 
-import {
-  Colors, PaymentMethod, Status,
-} from '~/enums'
+import { Colors, PaymentMethod, Status } from '~/enums'
 
 import type { IStatusChip } from '~/interfaces'
 
@@ -34,7 +32,9 @@ export const defaultProps = {
 }
 
 export const useOrderCardComponent = ({
-  status, isPaid, paymentMethod,
+  status,
+  isPaid,
+  paymentMethod,
 }: IOrderCardProps) => {
   const { t } = useI18n()
 
@@ -65,15 +65,13 @@ export const useOrderCardComponent = ({
     () => isPaid === 'YES',
   )
 
-  const paymentMethodText: ComputedRef<string> = computed<string>(
-    () => {
-      if (paymentMethod === PaymentMethod.CREDIT_CARD) {
-        return t('PAYMENT_METHOD.CREDIT_CARD')
-      }
+  const paymentMethodText: ComputedRef<string> = computed<string>(() => {
+    if (paymentMethod === PaymentMethod.CREDIT_CARD) {
+      return t('PAYMENT_METHOD.CREDIT_CARD')
+    }
 
-      return t('PAYMENT_METHOD.FIAT')
-    },
-  )
+    return t('PAYMENT_METHOD.FIAT')
+  })
 
   return {
     storageUrl,

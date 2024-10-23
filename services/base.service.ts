@@ -20,7 +20,10 @@ export class BaseService {
     }: RuntimeConfig = useRuntimeConfig()
 
     this.dbUrl = dbUrl
-    this.supabase = createClient(this.dbUrl, (isAdmin ? supabaseServiceKey : supabaseKey) as string)
+    this.supabase = createClient(
+      this.dbUrl,
+      (isAdmin ? supabaseServiceKey : supabaseKey) as string,
+    )
 
     this.TABLE = table
   }

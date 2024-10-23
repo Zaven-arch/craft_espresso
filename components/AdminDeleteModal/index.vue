@@ -60,13 +60,13 @@
 
 <script lang="ts" setup>
 import {
-  useAdminDeleteModalComponent, defaultProps, type IAdminDeleteModalProps, type IEmits,
+  useAdminDeleteModalComponent,
+  defaultProps,
+  type IAdminDeleteModalProps,
+  type IEmits,
 } from './index.script'
 
-withDefaults(
-  defineProps<Partial<IAdminDeleteModalProps>>(),
-  defaultProps,
-)
+withDefaults(defineProps<Partial<IAdminDeleteModalProps>>(), defaultProps)
 
 defineEmits<IEmits>()
 
