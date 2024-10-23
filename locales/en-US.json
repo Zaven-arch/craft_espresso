@@ -25,7 +25,11 @@
     "DATA_PRODUCTS": "Product data successfully updated! | Product successfully created!",
     "DELETE_PRODUCT": "Product successfully deleted!",
     "ORDER_PAID": "Order successfully marked as paid!",
-    "ORDER_STATUS": "Order status successfully updated!"
+    "ORDER_STATUS": "Order status successfully updated!",
+    "EDIT_STAFF_ADMIN": "Staff account successfully updated!",
+    "CREATE_STAFF_ADMIN": "Staff account successfully created!",
+    "DELETE_STAFF_ADMIN": "Staff account successfully deleted!",
+    "UPDATE_STATUS_STAFF_ADMIN": "Staff account status successfully changed!"
   },
   "LANGUAGES": {
     "ENGLISH": "English",
@@ -63,7 +67,8 @@
     "PRODUCTS_TEA": "Tea",
     "PRODUCTS_FRESH": "Fresh",
     "PRODUCTS_OTHER": "Other",
-    "SETTINGS": "Settings"
+    "SETTINGS": "Settings",
+    "STAFF_ACCOUNT": "Staff account"
   },
   "TOOLBAR": {
     "FILTER": "Filter",
@@ -79,6 +84,7 @@
   "FILTER": {
     "FIELD": {
       "SEARCH": "Search | Keyword",
+      "START_END": " start | end",
       "USERNAME": "Username"
     },
     "BUTTON": {
@@ -108,6 +114,11 @@
       "TITLE": "Delete",
       "CONFIRMATION": "Do you really want to delete the selected data?",
       "BUTTON": "Close | Delete"
+    },
+    "EXCEL": {
+      "TITLE": "Download Excel",
+      "DETAIL": "Do you want to download the data with excel format?",
+      "BUTTON": "Close | Download"
     }
   },
   "LOGIN": {
@@ -236,6 +247,10 @@
       "Actions"
     ],
     "ADMIN_MEMO": "Admin memo",
+    "FILTER": {
+      "STATUS": "Order paid status",
+      "DATE": "Order date"
+    },
     "PAID": {
       "ALL": "All",
       "YES": "Paid",
@@ -244,7 +259,8 @@
     "ACTIONS_TOOLBAR": {
       "CHANGE_TO_PAID": "Change to paid",
       "CHANGE_STATUS": "Change status",
-      "DELETE": "Delete order"
+      "DELETE": "Delete order",
+      "EXPORT": "Export orders"
     },
     "BUTTON_ACTIONS": {
       "DELETE": "Delete order",
@@ -273,5 +289,39 @@
     "ORDER": "Order",
     "BIG": "B",
     "SMALL": "S"
+  },
+  "SETTING_STAFF": {
+    "TITLE": "List of staff accounts",
+    "PERMISSION": {
+      "OWNER": "Owner",
+      "STAFF": "Staff"
+    },
+    "GRID_TITLES": [
+      "Account email\nLast login",
+      "Permission",
+      "Status",
+      "Edit",
+      "Actions"
+    ],
+    "BUTTON": {
+      "EDIT": "Edit",
+      "DELETE": "Delete",
+      "CHANGE_STATUS": "Change status",
+      "CLOSE": "Close",
+      "SAVE": "Save",
+      "CREATE": "Create new account"
+    },
+    "MODAL_TITLE": {
+      "DATA": "Edit account | Create new account",
+      "CHANGE_STATUS": "Change account status",
+      "DELETE": "Delete account",
+      "DETAIL": "Do you really want to delete the selected account?"
+    },
+    "DATA_MODAL": {
+      "PERMISSION": "Permission",
+      "EMAIL": "Email",
+      "PASSWORD": "Password | Confirm password",
+      "STATUS": "Status"
+    }
   }
 }

@@ -1,77 +1,15 @@
 <template>
   <v-row class="tw-py-4">
     <v-col cols="12">
-      <admin-toolbar
-        actions
-        :action-items="ordersActionConfig.toolbar"
-        @on-action="actionHandler"
-      >
-        <template #begin>
-          <v-col cols="12" sm="auto">
-            <v-row>
-              <v-col class="!tw-pt-0 sm:!tw-pt-3">
-                <v-sheet
-                  :min-width="$vuetify.display.smAndUp ? 300 : 'auto'"
-                  color="transparent"
-                >
-                  <v-text-field
-                    v-model.trim="state.keyword"
-                    :placeholder="$t('FILTER.FIELD.SEARCH', 0)"
-                    :color="color"
-                    clearable
-                    role="button"
-                    persistent-hint
-                    density="compact"
-                    hide-details="auto"
-                    variant="outlined"
-                    bg-color="white"
-                    class="sm:tw-min-h-[48px] [&>div>div>div:last-child_*]:tw-opacity-100
-                    [&>div>div>div:last-child_*]:tw-border-app-primary-red xs:tw-min-h-[36px]
-                    app-clearable-icon--primary-red"
-                    @keypress.enter="onSearchHandler()"
-                    @click:clear="onSearchHandler()"
-                  />
-                </v-sheet>
-              </v-col>
-              <v-col cols="auto" class="!tw-pt-0 sm:!tw-pt-3 !tw-pl-0">
-                <v-btn
-                  :loading="searchLoading"
-                  :color="color"
-                  :size="$vuetify.display.smAndUp ? 'large' : 'default'"
-                  flat
-                  width="110"
-                  class="!tw-normal-case !tw-font-normal !tw-text-white"
-                  @click="onSearchHandler()"
-                >
-                  {{ $t('FILTER.BUTTON.SEARCH') }}
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-col>
-        </template>
-        <template #end>
-          <v-col cols="12" sm="3">
-            <v-autocomplete
-              v-model="state.isPaid"
-              :items="paidStatusItems"
-              :loading="paidStatusLoading"
-              :disabled="paidStatusLoading"
-              :color="color"
-              variant="solo"
-              menu-icon="mdi-chevron-down"
-              density="compact"
-              hide-details
-              rounded="0"
-              item-title="text"
-              item-value="value"
-            >
-              <template #no-data>
-                <empty-data src="/images/empty.png" max-width="100" />
-              </template>
-            </v-autocomplete>
-          </v-col>
-        </template>
-      </admin-toolbar>
+      <v-col cols="12">
+        <admin-toolbar
+          :action-items="ordersActionConfig.toolbar"
+          filter
+          actions
+          @on-action="actionHandler"
+          @on-filter="filterModal.open"
+        />
+      </v-col>
     </v-col>
     <v-col cols="12">
       <div class="tw-overflow-x-auto">
@@ -191,6 +129,14 @@
         {{ $t('ORDERS.ACTIONS_MODAL_TITLE.CHANGE_STATUS') }}
       </template>
     </admin-changes-modal>
+    <orders-filter-modal @on-submit="onSearchHandler" />
+    <admin-excel-export-modal
+      :key="exportModal.isOpen.value + 'export'"
+      :loading="downloadLoading"
+      :modal="exportModal.isOpen.value"
+      @close="exportModal.close"
+      @on-download="onDownloadHandler"
+    />
   </v-row>
 </template>
 
@@ -202,17 +148,14 @@ definePageMeta({
 })
 
 const {
-  color,
   page,
   state,
   checkboxRef,
   pending,
   actionHandler,
   onSearchHandler,
-  searchLoading,
-  paidStatusItems,
-  paidStatusLoading,
   deleteModal,
+  filterModal,
   deleteLoading,
   onCloseModal,
   onDeleteHandler,
@@ -223,6 +166,9 @@ const {
   changeStatusLoading,
   onChangeStatusHandler,
   statusItems,
+  exportModal,
+  downloadLoading,
+  onDownloadHandler,
   ordersActionConfig,
 } = useOrdersDonePage()
 </script>

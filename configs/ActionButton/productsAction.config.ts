@@ -4,39 +4,51 @@ import type { IAdminActionButtonConfig, IAdminActionButtonItem } from '../../int
 
 import { ActionButtonType } from '../../enums'
 
-export default {
-  toolbar: (isHaveAddAction: boolean = false) => {
-    let actions: IAdminActionButtonItem[] = [
-      $createActionButtonItem(
-        'PRODUCTS.ACTIONS_TOOLBAR.DELETE',
-        ActionButtonType.PRODUCTS_DELETE,
-      ),
-    ]
+export default (): IAdminActionButtonConfig => {
+  const { isOwner } = useAuth()
 
-    if (isHaveAddAction) {
-      actions = [
-        $createActionButtonItem(
+  return {
+    toolbar: (isHaveAddAction: boolean = false) => {
+      const actions: IAdminActionButtonItem[] = []
+
+      if (isHaveAddAction && isOwner.value) {
+        actions.push($createActionButtonItem(
           'PRODUCTS.ACTIONS_TOOLBAR.ADD',
           ActionButtonType.PRODUCTS_ADD,
-        ),
-        ...actions,
-      ]
-    }
+        ))
+      }
 
-    return actions
-  },
-  card: [
-    $createActionButtonItem(
-      'PRODUCTS.BUTTON_ACTIONS.EDIT',
-      ActionButtonType.PRODUCTS_EDIT,
-    ),
-    $createActionButtonItem(
-      'PRODUCTS.BUTTON_ACTIONS.DELETE',
-      ActionButtonType.PRODUCTS_DELETE,
-    ),
-    $createActionButtonItem(
-      'PRODUCTS.BUTTON_ACTIONS.DETAILS',
-      ActionButtonType.PRODUCTS_DETAILS,
-    ),
-  ],
-} as IAdminActionButtonConfig
+      if (isOwner.value) {
+        actions.push($createActionButtonItem(
+          'PRODUCTS.ACTIONS_TOOLBAR.DELETE',
+          ActionButtonType.PRODUCTS_DELETE,
+        ))
+      }
+
+      return actions
+    },
+    card: (() => {
+      const actions: IAdminActionButtonItem[] = [
+        $createActionButtonItem(
+          'PRODUCTS.BUTTON_ACTIONS.DETAILS',
+          ActionButtonType.PRODUCTS_DETAILS,
+        ),
+      ]
+
+      if (isOwner.value) {
+        actions.push(
+          $createActionButtonItem(
+            'PRODUCTS.BUTTON_ACTIONS.EDIT',
+            ActionButtonType.PRODUCTS_EDIT,
+          ),
+          $createActionButtonItem(
+            'PRODUCTS.BUTTON_ACTIONS.DELETE',
+            ActionButtonType.PRODUCTS_DELETE,
+          ),
+        )
+      }
+
+      return actions
+    })(),
+  }
+}

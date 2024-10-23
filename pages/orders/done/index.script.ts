@@ -1,10 +1,8 @@
 /* eslint-disable no-undef */
 
-import { $getColor } from '~/utils'
-
 import { Colors, Status } from '~/enums'
 
-import { ordersActionConfig } from '~/configs'
+import { ordersActionConfig as _ordersActionConfig } from '~/configs'
 
 import {
   OrdersService,
@@ -15,23 +13,27 @@ import type { IOrder, IUseLoading, IUseSnackbar } from '~/interfaces'
 export const useOrdersDonePage = () => {
   const { t } = useI18n()
 
+  const ordersActionConfig = _ordersActionConfig()
+
   const {
     page,
     state,
     checkboxRef,
     deleteModal,
+    filterModal,
     changeStatusModal,
     changeToPaidModal,
+    exportModal,
     onCloseModal,
     actionHandler,
     setData,
     setLength,
     setStatus,
+    resetFilters,
   } = useOrders()
 
   const { loading: pending, setLoading: setPending }: IUseLoading = useLoading()
-  const { loading: searchLoading, setLoading: setSearchLoading }: IUseLoading = useLoading()
-  const { loading: paidStatusLoading, setLoading: setPaidStatusLoading }: IUseLoading = useLoading()
+  const { loading: downloadLoading, setLoading: setDownloadLoading }: IUseLoading = useLoading()
   const { loading: deleteLoading, setLoading: setDeleteLoading }: IUseLoading = useLoading()
   const {
     loading: changeToPaidLoading,
@@ -45,7 +47,7 @@ export const useOrdersDonePage = () => {
   const { $open }: IUseSnackbar = useSnackbar()
 
   const {
-    getList, update, remove,
+    getList, update, remove, download,
   } = new OrdersService()
 
   const onGetListData = async () => {
@@ -55,10 +57,12 @@ export const useOrdersDonePage = () => {
       setPending(true)
 
       const { data, total_page: length } = await getList({
-        like: state.value.keyword,
+        like: state.value.filter.keyword,
         limit: state.value.limit,
-        isPaid: state.value.isPaid,
-        status: state.value.status,
+        isPaid: state.value.filter.isPaid,
+        status: state.value.filter.status,
+        startDate: state.value.filter.startDate,
+        endDate: state.value.filter.endDate,
         page: page.value,
       })
 
@@ -74,12 +78,7 @@ export const useOrdersDonePage = () => {
 
   onMounted(onGetListData)
 
-  onUnmounted(() => {
-    state.value.keyword = ''
-    state.value.isPaid = Status.ALL
-    state.value.status = Status.ALL
-    page.value = 1
-  })
+  onUnmounted(resetFilters)
 
   watch(page, onGetListData)
 
@@ -93,11 +92,9 @@ export const useOrdersDonePage = () => {
     await onGetListData()
   }
 
-  const onSearchHandler = async (type: string = '') => {
-    const isPaid: boolean = type === 'isPaid'
-
+  const onSearchHandler = async () => {
     try {
-      isPaid ? setPaidStatusLoading(true) : setSearchLoading(true)
+      setPending(true)
 
       page.value = 1
 
@@ -105,7 +102,7 @@ export const useOrdersDonePage = () => {
     } catch (e: any) {
       $open(Colors.PRIMARY_RED, e.message)
     } finally {
-      isPaid ? setPaidStatusLoading(false) : setSearchLoading(false)
+      setPending(false)
     }
   }
 
@@ -219,19 +216,22 @@ export const useOrdersDonePage = () => {
     }
   }
 
-  watch(
-    () => state.value.isPaid,
-    () => onSearchHandler('isPaid'),
-  )
+  const onDownloadHandler = async (filters: any) => {
+    try {
+      setDownloadLoading(true)
 
-  const paidStatusItems: any[] = [
-    Status.ALL,
-    'YES',
-    'NO',
-  ].map((value: string) => ({
-    text: t(`ORDERS.PAID.${value || 'ALL'}`),
-    value,
-  }))
+      await download({
+        ...filters,
+        status: state.value.filter.status,
+      })
+    } catch (e: any) {
+      $open(Colors.PRIMARY_RED, e.message)
+    } finally {
+      setDownloadLoading(false)
+
+      exportModal.close()
+    }
+  }
 
   const statusItems: any[] = [
     Status.WAIT,
@@ -246,12 +246,10 @@ export const useOrdersDonePage = () => {
     state,
     checkboxRef,
     pending,
-    paidStatusItems,
     onSearchHandler,
-    searchLoading,
-    paidStatusLoading,
     actionHandler,
     deleteModal,
+    filterModal,
     deleteLoading,
     onCloseModal,
     onDeleteHandler,
@@ -262,7 +260,9 @@ export const useOrdersDonePage = () => {
     changeStatusModal,
     changeStatusLoading,
     onChangeStatusHandler,
+    exportModal,
+    downloadLoading,
+    onDownloadHandler,
     ordersActionConfig,
-    color: $getColor(Colors.PRIMARY_RED),
   }
 }

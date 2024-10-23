@@ -1,4 +1,8 @@
-import { DBTable } from '~/enums'
+import * as XLSX from 'xlsx'
+
+import { DateFormat, DBTable } from '~/enums'
+
+import { $numberFormat } from '~/utils'
 
 import type { IOrder } from '~/interfaces'
 
@@ -17,6 +21,7 @@ export class OrdersService extends BaseService {
     this.create = this.create.bind(this)
     this.update = this.update.bind(this)
     this.remove = this.remove.bind(this)
+    this.download = this.download.bind(this)
   }
 
   private transform(data: any) {
@@ -37,6 +42,58 @@ export class OrdersService extends BaseService {
     }))
   }
 
+  private async getXlsx(data: any[], filters?: any) {
+    const preparedDataOrdersProducts: any[] = []
+
+    const preparedDataOrders = data.map((item: any) => {
+      item.products.forEach((product:any) => {
+        preparedDataOrdersProducts.push({
+          ID: product.id,
+          Order: item.order,
+          Name: product.name,
+          'Small Price': $numberFormat(product.small_price),
+          'Small Count': $numberFormat(product.small_count),
+          'Big Price': $numberFormat(product.big_price),
+          'Big Count': $numberFormat(product.big_count),
+        })
+      })
+
+      return {
+        ID: item.id,
+        Status: item.status,
+        Price: $numberFormat(item.price),
+        'Payment Method': item.payment_method,
+        Order: item.order,
+        'Is Paid': item.is_paid,
+        'Admin memo': item.memo,
+      }
+    })
+
+    const resultData = [{
+      'Start Date': filters?.startDate ? $dateFormat(filters.startDate, DateFormat.LongWithSlash) : 'All Period',
+      'End Date': $dateFormat(filters?.endDate || new Date().toISOString(), DateFormat.LongWithSlash),
+      Result: $numberFormat(
+        data.reduce((sum: number, order: any) => sum + order.price || 0, 0),
+      ),
+    }]
+
+    // Convert the data to worksheet format
+    const worksheetOrders = XLSX.utils.json_to_sheet(preparedDataOrders)
+    const worksheetOrdersProducts = XLSX.utils.json_to_sheet(preparedDataOrdersProducts)
+    const worksheetResult = XLSX.utils.json_to_sheet(resultData)
+
+    // Create a new workbook
+    const workbook = XLSX.utils.book_new()
+
+    // Append the worksheet to the workbook
+    XLSX.utils.book_append_sheet(workbook, worksheetOrders, 'Orders')
+    XLSX.utils.book_append_sheet(workbook, worksheetOrdersProducts, "Order's Products")
+    XLSX.utils.book_append_sheet(workbook, worksheetResult, 'Results')
+
+    // Generate Excel file and trigger download
+    XLSX.writeFile(workbook, `orders_${Date.now()}.xlsx`)
+  }
+
   override getRequestQuery(filters?: any, pagination: boolean = false) {
     const req = this.supabase
       .from(this.TABLE as string)
@@ -55,6 +112,14 @@ export class OrdersService extends BaseService {
 
     if (filters?.isPaid) {
       req.eq('is_paid', filters?.isPaid)
+    }
+
+    if (filters?.startDate) {
+      req.gte('created_at', filters?.startDate)
+    }
+
+    if (filters?.endDate) {
+      req.lte('created_at', filters?.endDate)
     }
 
     req
@@ -126,5 +191,17 @@ export class OrdersService extends BaseService {
     }
 
     return data
+  }
+
+  async download(filters: any) {
+    const { data, error } = await this.getRequestQuery(filters)
+
+    if (error) {
+      throw error
+    }
+
+    await this.getXlsx(this.transform(data), filters)
+
+    return true
   }
 }

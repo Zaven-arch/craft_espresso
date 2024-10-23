@@ -8,6 +8,8 @@ import type { TIsPaid } from '~/types'
 const deleteModal: IUseModalWindow = useModalWindow()
 const changeStatusModal: IUseModalWindow = useModalWindow()
 const changeToPaidModal: IUseModalWindow = useModalWindow()
+const filterModal: IUseModalWindow = useModalWindow()
+const exportModal: IUseModalWindow = useModalWindow()
 
 export const useOrders = () => {
   const checkboxRef: any = {
@@ -18,17 +20,21 @@ export const useOrders = () => {
     data: [],
     length: 0,
     limit: 10,
-    keyword: '',
-    isPaid: '',
-    status: Status.ALL,
+    filter: {
+      keyword: '',
+      isPaid: Status.ALL,
+      status: Status.ALL,
+      startDate: '',
+      endDate: '',
+    },
     orderSet: new Set(),
   }))
 
   const setData = (items: any[]) => (state.value.data = items)
   const setLength = (value: number) => (state.value.length = value)
   const setLimit = (value: number) => (state.value.limit = value)
-  const setStatus = (value: Status) => (state.value.status = value)
-  const setIsPaid = (value: TIsPaid) => (state.value.isPaid = value)
+  const setStatus = (value: Status) => (state.value.filter.status = value)
+  const setIsPaid = (value: TIsPaid) => (state.value.filter.isPaid = value)
 
   watchEffect(() => {
     checkboxRef.checkbox = useCheckboxes(
@@ -38,12 +44,25 @@ export const useOrders = () => {
 
   const { page }: IUsePagination = usePagination()
 
+  const resetFilters = () => {
+    state.value.filter.keyword = ''
+    setIsPaid(Status.ALL)
+    setStatus(Status.ALL)
+    state.value.filter.startDate = ''
+    state.value.filter.endDate = ''
+    page.value = 1
+  }
+
   const actionHandler = (value: ActionButtonType, id?: string) => {
     if (id) {
       checkboxRef.checkbox.state.value = [id]
     }
 
     switch (value) {
+      case ActionButtonType.EXPORT_ORDERS:
+        exportModal.open()
+
+        break
       case ActionButtonType.ORDERS_DELETE:
         deleteModal.open()
 
@@ -74,6 +93,8 @@ export const useOrders = () => {
     changeStatusModal,
     deleteModal,
     changeToPaidModal,
+    filterModal,
+    exportModal,
     setData,
     setLength,
     setLimit,
@@ -81,5 +102,6 @@ export const useOrders = () => {
     onCloseModal,
     setStatus,
     setIsPaid,
+    resetFilters,
   }
 }

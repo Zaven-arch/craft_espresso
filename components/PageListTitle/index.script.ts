@@ -26,5 +26,5 @@ export const defaultProps = {
 
 export const usePageListTitleComponent = () => ({
   bgColor: $getColor(Colors.LIGHT_BLUE),
-  checkboxColor: $getColor(Colors.ACTIVE_TAB_PRIMARY),
+  checkboxColor: $getColor(Colors.PRIMARY_RED),
 })

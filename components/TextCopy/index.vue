@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{ 'tw-group/text': !mobile }"
-    class="tw-pl-5 tw-flex tw-gap-2 tw-items-center"
+    class="tw-flex tw-gap-2 tw-items-center"
     role="button"
     @click="doCopy(entry || text)"
   >

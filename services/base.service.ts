@@ -3,6 +3,8 @@
 
 import { SupabaseClient, createClient } from '@supabase/supabase-js'
 
+import type { RuntimeConfig } from 'nuxt/schema'
+
 import { DBTable } from '~/enums'
 
 export class BaseService {
@@ -10,18 +12,15 @@ export class BaseService {
 
   protected dbUrl: string
 
-  protected supabaseKey: string
-
   protected supabase: SupabaseClient
 
-  constructor(table: DBTable | null) {
+  constructor(table: DBTable | null, isAdmin?: boolean) {
     const {
-      public: { dbUrl, supabaseKey },
-    } = useRuntimeConfig()
+      public: { dbUrl, supabaseKey, supabaseServiceKey },
+    }: RuntimeConfig = useRuntimeConfig()
 
     this.dbUrl = dbUrl
-    this.supabaseKey = supabaseKey
-    this.supabase = createClient(this.dbUrl, this.supabaseKey)
+    this.supabase = createClient(this.dbUrl, (isAdmin ? supabaseServiceKey : supabaseKey) as string)
 
     this.TABLE = table
   }

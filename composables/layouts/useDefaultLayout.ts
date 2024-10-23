@@ -11,11 +11,44 @@ import type {
   IUseNavigationDrawer,
 } from '~/interfaces'
 
-import { navbarConfig, navigationDrawerConfig } from '~/configs'
+import {
+  navbarConfig as _navbarConfig,
+  navigationDrawerConfig as _navigationDrawerConfig,
+} from '~/configs'
 
 import { AuthService } from '~/services'
 
+import { staffAccountLimits } from '~/constants'
+
 export const useDefaultLayout = async () => {
+  const {
+    URLS, SIDEBAR, RE_WRITE_URL,
+  } = staffAccountLimits[AuthService.user?.user_metadata?.role] ?? {}
+
+  const navbarConfig = Object.fromEntries(
+    Object.entries(_navbarConfig)
+      .filter(([key]: any[]) => !SIDEBAR?.includes(key))
+      .map(([key, value]: any[]) => [
+        key,
+        value.filter(({ route }: any) => !URLS?.includes(route)),
+      ]),
+  )
+
+  const navigationDrawerConfig = Object.fromEntries(
+    Object.entries(_navigationDrawerConfig).map(([key, value]) => [
+      key,
+      value
+        .filter(({ route }: any) => !SIDEBAR?.includes(route))
+        .map((item) => {
+          if (RE_WRITE_URL?.[item.route]) {
+            item.route = RE_WRITE_URL?.[item.route]
+          }
+
+          return item
+        }),
+    ]),
+  )
+
   const { setNavbar, setColors: setNavbarColors }: IUseNavbar = useNavbar()
 
   const {

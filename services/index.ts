@@ -1,3 +1,4 @@
+import { StaffSettingsService } from './staff-settings.service'
 import { OrderProductsService } from './order_products.service'
 import { OrdersService } from './orders.service'
 import { ManagementService } from './management.service'
@@ -12,4 +13,5 @@ export {
   OrdersService,
   OrderProductsService,
   AuthService,
+  StaffSettingsService,
 }

@@ -13,6 +13,7 @@ import { FileExtension } from './file-extension.enum'
 import { FileType } from './file-type.enum'
 import { Language } from './language.enum'
 import { PaymentMethod } from './payment-method.enum'
+import { UserRole } from './user-role.enum'
 
 export {
   Colors,
@@ -30,4 +31,5 @@ export {
   FileExtension,
   Language,
   PaymentMethod,
+  UserRole,
 }

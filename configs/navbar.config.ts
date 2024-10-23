@@ -73,5 +73,10 @@ export default {
       'settings',
       NavigationDrawerRoute.SETTINGS,
     ),
+    $createNavbarItem(
+      'NAVBAR.STAFF_ACCOUNT',
+      'settings/staff',
+      NavigationDrawerRoute.SETTINGS,
+    ),
   ],
 }

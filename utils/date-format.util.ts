@@ -1,6 +1,6 @@
-import { DateFormat } from '../enums'
-
 import { DateTime } from 'luxon'
+
+import { DateFormat } from '../enums'
 
 export function dateFormat(
   this: any,
@@ -10,13 +10,20 @@ export function dateFormat(
 ): string {
   const date = DateTime.fromISO(value)
 
-
   if (!value?.trim()) {
     return (this.innerHTML = '&mdash;')
   }
 
   if (!date.isValid) {
+    if (!this) {
+      return value
+    }
+
     return (this.innerText = value)
+  }
+
+  if (!this) {
+    return date.setZone(timezone || 'local').toFormat(format)
   }
 
   return (this.innerText = date.setZone(timezone || 'local').toFormat(format))

@@ -30,6 +30,7 @@ import type { IProductDetail } from './IProductDetail.interface'
 import type { IOrder } from './IOrder.interface'
 import type { IOrderProducts } from './IOrderProducts.interface'
 import type { IUseLogout } from './IUseLogout.interface'
+import type { IStaffPayload } from './IStaffPayload.interface'
 
 export type {
   ISnackbarState,
@@ -64,4 +65,5 @@ export type {
   IUseLogin,
   IUseLogout,
   ILoginPayload,
+  IStaffPayload,
 }

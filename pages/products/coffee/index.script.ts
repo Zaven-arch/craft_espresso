@@ -4,7 +4,7 @@ import { $getColor } from '~/utils'
 
 import { Colors, ProductType, Status } from '~/enums'
 
-import { productsActionConfig } from '~/configs'
+import { productsActionConfig as _productsActionConfig } from '~/configs'
 
 import { ProductsService, UploadService } from '~/services'
 
@@ -16,6 +16,8 @@ export const _pageMeta = {
 
 export const useProductsCoffeePage = () => {
   const { t } = useI18n()
+
+  const productsActionConfig = _productsActionConfig()
 
   const {
     page,
